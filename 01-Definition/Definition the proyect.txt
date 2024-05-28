@@ -1,0 +1,123 @@
+Descripción del Proyecto: Sistema de Facturación para Restaurante -- JavaSquad
+Introducción
+
+El proyecto consiste en desarrollar un sistema de facturación para un restaurante utilizando programación orientada a objetos (POO) en Java. Este sistema se encargará de gestionar las órdenes de los clientes, calcular el total a pagar, aplicar el 15% de IVA y generar facturas detalladas. La aplicación deberá reflejar todas las funcionalidades esenciales de un sistema de facturación eficiente, asegurando precisión y facilidad de uso.
+
+Objetivos
+1.Implementar un sistema de facturación que:
+
+	-Gestione las órdenes de los clientes.
+	-Calcule automáticamente el IVA del 15%.
+	-Genere facturas detalladas y precisas.
+
+2.Aplicar principios de POO, tales como encapsulación, herencia, polimorfismo y abstracción.
+
+3.Desarrollar una interfaz gráfica de usuario (GUI) intuitiva y amigable.
+
+Requisitos Funcionales
+
+1.Gestión de Productos y Menú
+
+	-Creación, modificación y eliminación de productos del menú.
+	-Cada producto tendrá atributos como nombre, descripción, precio y categoría.
+
+2.Gestión de Órdenes
+
+	-Permitir a los meseros tomar órdenes de los clientes.
+	-Agregar, modificar o eliminar ítems de una orden.
+
+3.Cálculo de Totales
+
+	-Calcular el subtotal de la orden.
+	-Aplicar automáticamente el 15% de IVA.
+	-Calcular el total final de la orden.
+
+4.Generación de Facturas
+
+	-Generar y mostrar facturas detalladas.
+	-Incluir información como lista de ítems, cantidades, precios, subtotal, IVA y total final.
+
+5.Historial de Órdenes
+
+	-Mantener un historial de órdenes anteriores.
+	-Permitir la búsqueda y visualización de facturas pasadas.
+
+Requisitos No Funcionales
+
+1.Usabilidad
+
+	-Interfaz gráfica intuitiva y fácil de usar.
+	-Diseño responsivo para diferentes tamaños de pantalla.
+
+2.Rendimiento
+
+	-Respuesta rápida a las acciones del usuario.
+	-Manejo eficiente de datos para evitar demoras.
+
+3.Seguridad
+
+	-Control de acceso para evitar modificaciones no autorizadas.
+	-Protección de datos sensibles.
+
+Diseño del Sistema
+
+1.Clases Principales
+
+Producto: Representa los ítems del menú del restaurante.
+
+	Atributos: nombre, descripción, precio, categoría.
+	Métodos: getters y setters, toString().
+
+Orden: Representa una orden realizada por un cliente.
+
+	Atributos: lista de productos, cantidades, subtotal, IVA, total.
+	Métodos: agregarProducto(), eliminarProducto(), calcularSubtotal(), calcularIVA(), calcularTotal().
+
+Factura: Genera la factura detallada de una orden.
+
+	Atributos: orden, fecha, número de factura.
+	Métodos: generarFactura(), mostrarFactura().
+
+Restaurante: Gestiona el menú y las órdenes.
+
+	Atributos: lista de productos, lista de órdenes.
+	Métodos: agregarProducto(), modificarProducto(), eliminarProducto(), tomarOrden(), generarFactura().
+
+2.Interfaz Gráfica (GUI)
+
+	Panel de menú para visualizar y gestionar productos.
+	Panel de toma de órdenes para agregar ítems a la orden actual.
+	Panel de facturación para mostrar la factura generada.
+
+Herramientas y Tecnologías
+
+	Lenguaje de Programación: Java, Python
+	IDE: NetBeans, Visual Code Studio.
+	Bibliotecas: Swing (para la GUI), JavaFX (opción que se podría hacer).
+	Control de Versiones: Git y GitHub.
+
+Planificación y Entregables
+
+Fase 1: Análisis y Diseño
+
+	Definir requisitos detallados.
+	Crear diagramas de clases y de flujo.
+
+Fase 2: Implementación
+
+	Desarrollar las clases principales y la lógica del negocio.
+	Implementar la interfaz gráfica de usuario.
+
+Fase 3: Pruebas y Depuración
+
+	Realizar pruebas unitarias y de integración.
+	Depurar errores y optimizar el código.
+
+Fase 4: Documentación y Entrega
+
+	Documentar el código y las funcionalidades.
+	Preparar la presentación final del proyecto.
+
+Conclusión
+
+Este proyecto permitirá aplicar y consolidar conocimientos de programación orientada a objetos en Java, así como habilidades en el desarrollo de interfaces gráficas y gestión de sistemas. Al finalizar, se espera tener un sistema de facturación funcional y robusto que cumpla con los requerimientos especificados, proporcionando una solución eficiente para la gestión de facturas en un restaurante.
