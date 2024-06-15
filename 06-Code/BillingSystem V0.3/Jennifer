@@ -1,0 +1,38 @@
+{
+  "Individualinvoices": [
+    {
+      "customer": {
+        "id": 1752570430,
+        "name": "Jennifer",
+        "email": "jennifer69@gmail.com"
+      },
+      "lines": [
+        {
+          "product": {
+            "id": 3,
+            "name": "Soda",
+            "price": 1.49,
+            "stock": 2
+          },
+          "quantity": 2
+        },
+        {
+          "product": {
+            "id": 3,
+            "name": "Soda",
+            "price": 1.49,
+            "stock": 1
+          },
+          "quantity": 1
+        }
+      ],
+      "paymentMethod": {
+        "id": 1,
+        "name": "Cash"
+      },
+      "subtotal": 4.47,
+      "vat": 0.5364,
+      "total": 5.006399999999999
+    }
+  ]
+}

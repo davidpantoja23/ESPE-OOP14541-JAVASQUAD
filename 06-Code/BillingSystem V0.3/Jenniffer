@@ -1,0 +1,29 @@
+{
+  "Individualinvoices": [
+    {
+      "customer": {
+        "id": 850595455,
+        "name": "Jennniffer",
+        "email": "jenniffer@gmail.com"
+      },
+      "lines": [
+        {
+          "product": {
+            "id": 2,
+            "name": "Fries",
+            "price": 2.99,
+            "stock": 3
+          },
+          "quantity": 3
+        }
+      ],
+      "paymentMethod": {
+        "id": 1,
+        "name": "Cash"
+      },
+      "subtotal": 8.97,
+      "vat": 1.0764,
+      "total": 10.0464
+    }
+  ]
+}

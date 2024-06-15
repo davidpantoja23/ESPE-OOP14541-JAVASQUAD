@@ -1,0 +1,29 @@
+{
+  "Individualinvoices": [
+    {
+      "customer": {
+        "id": 1,
+        "name": "David",
+        "email": "david@gmail.com"
+      },
+      "lines": [
+        {
+          "product": {
+            "id": 1,
+            "name": "Burger",
+            "price": 5.99,
+            "stock": 3
+          },
+          "quantity": 3
+        }
+      ],
+      "paymentMethod": {
+        "id": 1,
+        "name": "Cash"
+      },
+      "subtotal": 17.97,
+      "vat": 2.1563999999999997,
+      "total": 20.126399999999997
+    }
+  ]
+}
