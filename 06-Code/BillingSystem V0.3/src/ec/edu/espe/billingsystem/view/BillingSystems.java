@@ -24,7 +24,7 @@ public class BillingSystems {
         break;
         case 2:
         List<Product> products = new ArrayList<>();
-        products.add(new Product(1, "Burger", 5.99, 100));
+        products.add(new Product(1, "Pizza", 5.99, 100));
         products.add(new Product(2, "Fries", 2.99, 200));
         products.add(new Product(3, "Soda", 1.49, 300));
         for (Product product : products) {
