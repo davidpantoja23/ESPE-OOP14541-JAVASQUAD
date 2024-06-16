@@ -1,6 +1,6 @@
 
 package ec.edu.espe.billingsystem.model;
-
+import java.util.Objects;
 /**
  *
  * @author David Pantoja, JavaSquad, DCCO-ESPE
@@ -11,9 +11,12 @@ public class Report {
     private String content;
 
     public Report(int id, String type, String content) {
+        if (id < 0) {
+            throw new IllegalArgumentException("Report ID cannot be negative");
+        }
         this.id = id;
-        this.type = type;
-        this.content = content;
+        this.type = Objects.requireNonNull(type, "Type cannot be null");
+        this.content = Objects.requireNonNull(content, "Content cannot be null");
     }
 
     @Override
