@@ -10,7 +10,10 @@ public class InvoiceLine {
     private int quantity;
 
     public InvoiceLine(Product product, int quantity) {
-        this.product = product;
+        this.product = Objects.requireNonNull(product, "Product cannot be null");
+        if (quantity < 0) {
+            throw new IllegalArgumentException("Quantity cannot be negative");
+        }
         this.quantity = quantity;
     }
 
