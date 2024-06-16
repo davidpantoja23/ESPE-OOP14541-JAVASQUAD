@@ -1,6 +1,6 @@
 
 package ec.edu.espe.billingsystem.model;
-
+import java.util.Objects;
 /**
  *
  * @author David Pantoja, JavaSquad, DCCO-ESPE
