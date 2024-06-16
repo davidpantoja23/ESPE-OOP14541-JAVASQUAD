@@ -10,8 +10,6 @@ package ec.edu.espe.billingsystem.utils;
  */
 import java.util.Scanner;
 
-import java.util.Scanner;
-
 public class InputUtils {
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -21,12 +19,14 @@ public class InputUtils {
             System.out.println("Invalid input. Please enter an integer.");
             scanner.next();
         }
-        return scanner.nextInt();
+        int value = scanner.nextInt();
+        scanner.nextLine(); 
+        return value;
     }
 
     public static String getString(String prompt) {
         System.out.println(prompt);
-        return scanner.next();
+        return scanner.nextLine();
     }
 
     public static double getDouble(String prompt) {
@@ -35,6 +35,8 @@ public class InputUtils {
             System.out.println("Invalid input. Please enter a decimal number.");
             scanner.next();
         }
-        return scanner.nextDouble();
+        double value = scanner.nextDouble();
+        scanner.nextLine(); // Clear the buffer
+        return value;
     }
 }
