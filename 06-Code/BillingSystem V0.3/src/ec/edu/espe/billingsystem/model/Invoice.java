@@ -6,7 +6,7 @@ package ec.edu.espe.billingsystem.model;
  * @author David Pantoja, JavaSquad, DCCO-ESPE
  */
 
-
+import java.util.Objects;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,19 +19,19 @@ public class Invoice {
     private double total;
 
     public Invoice(Customer customer, PaymentMethod paymentMethod) {
-        this.customer = customer;
-        this.paymentMethod = paymentMethod;
+        this.customer = Objects.requireNonNull(customer, "Customer cannot be null");
+        this.paymentMethod = Objects.requireNonNull(paymentMethod, "Payment method cannot be null");
         this.lines = new ArrayList<>();
     }
 
     public void addLine(InvoiceLine line) {
-        lines.add(line);
+        lines.add(Objects.requireNonNull(line, "Invoice line cannot be null"));
         updateTotals();
     }
 
     private void updateTotals() {
         subtotal = lines.stream().mapToDouble(InvoiceLine::getSubtotal).sum();
-        vat = subtotal * 0.12;
+        vat = subtotal * 0.15;
         total = subtotal + vat;
     }
 
@@ -44,7 +44,7 @@ public class Invoice {
     }
 
     public List<InvoiceLine> getLines() {
-        return lines;
+        return new ArrayList<>(lines);
     }
 
     public double getSubtotal() {
