@@ -51,6 +51,13 @@ public class BillingSystems {
         products.add(new Product(1, "Pizza", 5.99, 100));
         products.add(new Product(2, "Fries", 2.99, 200));
         products.add(new Product(3, "Soda", 1.49, 300));
+        products.add(new Product(4, "Burger", 4.99, 150));
+        products.add(new Product(5, "Salad", 3.99, 80));
+        products.add(new Product(6, "Chicken Sandwich", 5.49, 120));
+        products.add(new Product(7, "Ice Cream", 2.49, 90));
+        products.add(new Product(8, "Coffee", 1.99, 200));
+        products.add(new Product(9, "Tea", 1.49, 250));
+        products.add(new Product(10, "Milkshake", 3.49, 70));
         
         for (Product product : products) {
             System.out.println(product.getId() + ": " + product.getName() + " - $" + product.getPrice());
