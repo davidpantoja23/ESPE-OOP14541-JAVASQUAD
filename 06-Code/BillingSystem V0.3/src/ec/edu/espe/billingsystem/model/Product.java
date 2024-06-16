@@ -1,6 +1,6 @@
 
 package ec.edu.espe.billingsystem.model;
-
+import java.util.Objects;
 /**
  *
  * @author David Pantoja, JavaSquad, DCCO-ESPE
@@ -13,9 +13,21 @@ public class Product {
     private int stock;
 
     public Product(int id, String name, double price, int stock) {
+        if (id < 0) {
+            throw new IllegalArgumentException("Product ID cannot be negative");
+        }
         this.id = id;
-        this.name = name;
+
+        this.name = Objects.requireNonNull(name, "Product name cannot be null");
+
+        if (price <= 0) {
+            throw new IllegalArgumentException("Price must be positive");
+        }
         this.price = price;
+
+        if (stock < 0) {
+            throw new IllegalArgumentException("Stock cannot be negative");
+        }
         this.stock = stock;
     }
 
@@ -36,6 +48,9 @@ public class Product {
     }
 
     public void setStock(int stock) {
+        if (stock < 0) {
+            throw new IllegalArgumentException("Stock cannot be negative");
+        }
         this.stock = stock;
     }
 
