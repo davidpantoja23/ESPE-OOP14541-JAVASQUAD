@@ -10,6 +10,9 @@ public class IVACalculator {
     private static final double IVA_RATE = 0.15;
 
     public static double calculateIVA(double subtotal) {
+        if (subtotal < 0) {
+            throw new IllegalArgumentException("Subtotal cannot be negative");
+        }
         return subtotal * IVA_RATE;
         
     }
