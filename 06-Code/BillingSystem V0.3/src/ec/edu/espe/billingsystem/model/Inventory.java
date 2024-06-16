@@ -21,6 +21,10 @@ public class Inventory {
     public Inventory() {
         products = new ArrayList<>();
     }
+    
+    public Inventory(List<Product> products) {
+        this.products = products;
+    }
 
     @Override
     public String toString() {
@@ -31,8 +35,6 @@ public class Inventory {
         this.products = products;
     }
     
-    
-
     public void addProduct(Product product) {
         products.add(product);
     }
