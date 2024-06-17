@@ -31,7 +31,7 @@ public class Invoice {
 
     private void updateTotals() {
         subtotal = lines.stream().mapToDouble(InvoiceLine::getSubtotal).sum();
-        vat = subtotal * 0.15;
+        vat = subtotal * 0.12;
         total = subtotal + vat;
     }
 

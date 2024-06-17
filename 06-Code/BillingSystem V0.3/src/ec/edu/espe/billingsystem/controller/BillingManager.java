@@ -22,9 +22,9 @@ import java.util.Objects;
 
 public class BillingManager {
     public Invoice createInvoice(Customer customer, List<Product> products, PaymentMethod paymentMethod) {
-        Objects.requireNonNull(customer, "Customer cannot be null");
-        Objects.requireNonNull(products, "Products cannot be null");
-        Objects.requireNonNull(paymentMethod, "Payment method cannot be null");
+        Objects.requireNonNull(customer, "Debe ingresar información en este campo");
+        Objects.requireNonNull(products, "Debe seleccionar un producto");
+        Objects.requireNonNull(paymentMethod, "Debe seleccionar un método de pago");
         Invoice invoice = new Invoice(customer, paymentMethod);
         for (Product product : products) {
             if (product != null && product.getStock() > 0) {
@@ -35,12 +35,12 @@ public class BillingManager {
     }
 
     public void saveInvoiceToFile(Invoice invoice, String fileName) {
-        Objects.requireNonNull(invoice, "Invoice cannot be null");
-        Objects.requireNonNull(fileName, "File name cannot be null");
+        Objects.requireNonNull(invoice, "Ingrese datos para facturación");
+        Objects.requireNonNull(fileName, "Debe ingresar el nombre del documento");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             writer.write(invoice.toString());
         } catch (IOException e) {
-            System.err.println("An error occurred while saving the invoice to the file: " + e.getMessage());
+            System.err.println("Un error ha ocurrido cuando se guardaba la factura: " + e.getMessage());
             e.printStackTrace();
         }
     }

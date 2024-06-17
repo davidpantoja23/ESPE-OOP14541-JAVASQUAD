@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import ec.edu.espe.billingsystem.controller.BillingManager;
 import ec.edu.espe.billingsystem.model.Customer;
 import ec.edu.espe.billingsystem.model.Invoice;
+import ec.edu.espe.billingsystem.model.InvoiceLine;
 import ec.edu.espe.billingsystem.model.PaymentMethod;
 import ec.edu.espe.billingsystem.model.Product;
 import ec.edu.espe.billingsystem.utils.InputUtils;
@@ -26,10 +27,33 @@ public class FileManager {
         List<Product> products = initializeProducts();
 
         // Enter customer details
-        int customerId = InputUtils.getInt("Enter customer ID:");
+        
+        String customerId = InputUtils.getString("Enter customer ID:");
+        boolean isValidId = false;
+                 while (!isValidId) {
+            try {
+                customerId = InputUtils.getString("Enter customer ID (must be exactly 10 digits):");
+                if (customerId.length() == 10 && customerId.matches("\\d{10}")) {
+                    isValidId = true; // Marcar como válido y salir del bucle
+                } else {
+                    System.err.println("Invalid input: ID must be a string with exactly 10 digits.");
+                }
+            } catch (IllegalArgumentException e) {
+                System.err.println("Invalid input: " + e.getMessage());
+            }
+        }
         String customerName = InputUtils.getString("Enter customer name:");
         String customerEmail = InputUtils.getString("Enter customer email:");
-        Customer customer = new Customer(customerId, customerName, customerEmail);
+        String customerPhoneNumber = InputUtils.getString("Ingrese el numero telefonico");
+        
+
+
+
+        
+                
+        
+  
+        Customer customer = new Customer(customerId, customerName, customerEmail, customerPhoneNumber);
 
         PaymentMethod paymentMethod = selectPaymentMethod();
 
@@ -57,17 +81,27 @@ public class FileManager {
         return products;
     }
 
-    private static PaymentMethod selectPaymentMethod() {
-        System.out.println("Select payment method (1: Cash, 2: Credit Card, 3: Mobile Payment):");
-        int paymentMethodId = InputUtils.getInt("Enter payment method ID:");
-        String paymentMethodName = switch (paymentMethodId) {
-            case 1 -> "Cash";
-            case 2 -> "Credit Card";
-            case 3 -> "Mobile Payment";
-            default -> throw new IllegalArgumentException("Invalid payment method");
-        };
-        return new PaymentMethod(paymentMethodId, paymentMethodName);
+   private static PaymentMethod selectPaymentMethod() {
+    System.out.println("Select payment method (1: Cash, 2: Credit Card, 3: Mobile Payment):");
+    int paymentMethodId = InputUtils.getInt("Enter payment method ID:");
+    String paymentMethodName;
+
+    switch (paymentMethodId) {
+        case 1:
+            paymentMethodName = "Cash";
+            break;
+        case 2:
+            paymentMethodName = "Credit Card";
+            break;
+        case 3:
+            paymentMethodName = "Mobile Payment";
+            break;
+        default:
+            throw new IllegalArgumentException("Invalid payment method");
     }
+
+    return new PaymentMethod(paymentMethodId, paymentMethodName);
+}
 
     private static List<Product> selectProducts(List<Product> products) {
         List<Product> selectedProducts = new ArrayList<>();
@@ -104,9 +138,10 @@ public class FileManager {
         System.out.println("Customer: " + invoice.getCustomer().getName());
         System.out.println("Payment Method: " + invoice.getPaymentMethod().getName());
         System.out.println("Products:");
-        for (var line : invoice.getLines()) {
-            System.out.println(line.getProduct().getName() + ": " + line.getQuantity() + " x $" + line.getProduct().getPrice());
-        }
+        
+       for (InvoiceLine line : invoice.getLines()) {
+        System.out.println(line.getProduct().getName() + ": " + line.getQuantity() + " x $" + line.getProduct().getPrice());
+    }
         System.out.println("Subtotal: $" + invoice.getSubtotal());
         System.out.println("VAT: $" + invoice.getVat());
         System.out.println("Total: $" + invoice.getTotal());

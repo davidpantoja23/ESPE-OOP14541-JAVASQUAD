@@ -31,9 +31,9 @@ public class Inventory {
         return "Inventory{" + "products=" + products + '}';
     }
 
-    public Inventory(List<Product> products) {
-        this.products = products;
-    }
+    //public Inventory(List<Product> products) {
+     //   this.products = products;
+    //}
     
     public void addProduct(Product product) {
         products.add(product);

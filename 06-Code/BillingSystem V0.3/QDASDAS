@@ -1,0 +1,16 @@
+{
+  "customer": {
+    "id": 2321,
+    "name": "ASDAS",
+    "email": "SDSD",
+    "phoneNumber": "12312"
+  },
+  "lines": [],
+  "paymentMethod": {
+    "id": 1,
+    "name": "Cash"
+  },
+  "subtotal": 0.0,
+  "vat": 0.0,
+  "total": 0.0
+}

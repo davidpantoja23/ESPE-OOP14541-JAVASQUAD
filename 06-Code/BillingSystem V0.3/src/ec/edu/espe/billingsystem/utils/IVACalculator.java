@@ -7,7 +7,7 @@ package ec.edu.espe.billingsystem.utils;
  */
 
 public class IVACalculator {
-    private static final double IVA_RATE = 0.15;
+    private static final double IVA_RATE = 0.12;
 
     public static double calculateIVA(double subtotal) {
         if (subtotal < 0) {
