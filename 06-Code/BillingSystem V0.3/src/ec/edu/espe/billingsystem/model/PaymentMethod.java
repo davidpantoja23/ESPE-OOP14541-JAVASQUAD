@@ -11,7 +11,11 @@ public class PaymentMethod {
 
     public PaymentMethod(int id, String name) {
         this.id = id;
+<<<<<<< HEAD
         this.name = Objects.requireNonNull(name, "Debe seleccionar al menos un método de pago");
+=======
+        this.name = Objects.requireNonNull(name, "El nombre no puede ser nulo");
+>>>>>>> 947e8e8b567d8ea6453ad7e427a783eeb8ea36df
     }
 
     public int getId() {

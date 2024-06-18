@@ -14,10 +14,10 @@ import java.util.Objects;
 public class InventoryManager {
     private final Inventory inventory;
     public InventoryManager(Inventory inventory) {
-        this.inventory = Objects.requireNonNull(inventory, "Inventory cannot be null");
+        this.inventory = Objects.requireNonNull(inventory, "El inventario no puede ser nulo.");
     }
     public void addProduct(Product product) {
-        Objects.requireNonNull(product, "Product cannot be null");
+        Objects.requireNonNull(product, "El producto no puede ser nulo.");
         inventory.addProduct(product);
     }
     public void removeProduct(int productId) {

@@ -12,11 +12,15 @@ public class Report {
 
     public Report(int id, String type, String content) {
         if (id < 0) {
+<<<<<<< HEAD
             throw new IllegalArgumentException("Debe ingresar un número positivo");
+=======
+            throw new IllegalArgumentException("El ID del informe no puede ser negativo");
+>>>>>>> 947e8e8b567d8ea6453ad7e427a783eeb8ea36df
         }
         this.id = id;
-        this.type = Objects.requireNonNull(type, "Type cannot be null");
-        this.content = Objects.requireNonNull(content, "Content cannot be null");
+        this.type = Objects.requireNonNull(type, "El tipo no puede ser nulo");
+        this.content = Objects.requireNonNull(content, "El contenido no puede ser nulo.");
     }
 
     @Override

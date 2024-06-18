@@ -21,19 +21,28 @@ public class Invoice {
 
     public Invoice(Customer customer, PaymentMethod paymentMethod) {
         this.typeOfId = typeOfId;
+<<<<<<< HEAD
         this.customer = Objects.requireNonNull(customer, "Este campo no puede estar vacío");
         this.paymentMethod = Objects.requireNonNull(paymentMethod, "Este campo no puede estar vacío");
+=======
+        this.customer = Objects.requireNonNull(customer, "El cliente no puede ser nulo");
+        this.paymentMethod = Objects.requireNonNull(paymentMethod, "El método de pago no puede ser nulo");
+>>>>>>> 947e8e8b567d8ea6453ad7e427a783eeb8ea36df
         this.lines = new ArrayList<>();
     }
 
     public void addLine(InvoiceLine line) {
+<<<<<<< HEAD
         lines.add(Objects.requireNonNull(line, "Este campo no puede estar vacío"));
+=======
+        lines.add(Objects.requireNonNull(line, "La línea de factura no puede ser nula"));
+>>>>>>> 947e8e8b567d8ea6453ad7e427a783eeb8ea36df
         updateTotals();
     }
 
     private void updateTotals() {
         subtotal = lines.stream().mapToDouble(InvoiceLine::getSubtotal).sum();
-        vat = subtotal * 0.12;
+        vat = subtotal * 0.15;
         total = subtotal + vat;
     }
 
