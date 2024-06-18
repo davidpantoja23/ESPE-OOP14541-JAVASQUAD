@@ -9,16 +9,20 @@ import java.util.Scanner;
  */
 public class Customer {
     private String id;
+    private TypeOfId typeOfId;
     private String name;
     private String email;
 
-    public Customer(String id, String name, String email) {
+    @Override
+    public String toString() {
+        return "Customer{" + "id=" + id + ", typeOfId=" + typeOfId + ", name=" + name + ", email=" + email + '}';
+    }
 
+    public Customer(String id, TypeOfId typeOfId, String name, String email) {
         this.id = id;
+        this.typeOfId = typeOfId;
         this.name = name;
         this.email = email;
-
-        
     }
 
     /**
@@ -35,12 +39,19 @@ public class Customer {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "Customer{" + "id=" + id + ", name=" + name + ", email=" + email + '}';
+    /**
+     * @return the typeOfId
+     */
+    public TypeOfId getTypeOfId() {
+        return typeOfId;
     }
 
-
+    /**
+     * @param typeOfId the typeOfId to set
+     */
+    public void setTypeOfId(TypeOfId typeOfId) {
+        this.typeOfId = typeOfId;
+    }
 
     /**
      * @return the name
@@ -70,11 +81,5 @@ public class Customer {
         this.email = email;
     }
 
-    /**
-     * @return the phoneNumber
-     */
-
     
 }
-
-    

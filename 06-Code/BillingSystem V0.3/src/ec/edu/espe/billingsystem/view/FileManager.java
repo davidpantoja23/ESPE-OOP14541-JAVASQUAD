@@ -8,6 +8,7 @@ import ec.edu.espe.billingsystem.model.Invoice;
 import ec.edu.espe.billingsystem.model.InvoiceLine;
 import ec.edu.espe.billingsystem.model.PaymentMethod;
 import ec.edu.espe.billingsystem.model.Product;
+import ec.edu.espe.billingsystem.model.TypeOfId;
 import ec.edu.espe.billingsystem.utils.InputUtils;
 
 import java.io.FileWriter;
@@ -28,16 +29,20 @@ public class FileManager {
 
         // Enter customer details
         
-        String customerId = InputUtils.getString("Enter customer ID:");
-       
+        TypeOfId typeOfId = selectTypeOfId();
         
-        String customerName = InputUtils.getString("Enter customer name:");
-        String customerEmail = InputUtils.getString("Enter customer email:");
-       
-        Customer customer = new Customer (customerId, customerName, customerEmail);
-        PaymentMethod paymentMethod = selectPaymentMethod();
+        
+    String customerId = InputUtils.getString("Enter customer ID:");      
+    String customerName = InputUtils.getString("Enter customer name:");
+    String customerEmail = InputUtils.getString("Enter customer email:");
+   
+    // Create Customer object
+    Customer customer = new Customer(customerId, typeOfId, customerName, customerEmail);
+    
+    PaymentMethod paymentMethod = selectPaymentMethod();
 
         List<Product> selectedProducts = selectProducts(products);
+        Customer Customer;
 
         Invoice invoice = billingManager.createInvoice(customer, selectedProducts, paymentMethod);
         
@@ -45,6 +50,31 @@ public class FileManager {
 
         saveInvoiceToFile(invoice);
     }
+    private static TypeOfId selectTypeOfId() {
+        int typeOfId;
+        String typeName;
+
+        while (true) {
+            System.out.println("Select type of ID (1: Cédula, 2: RUC):");
+            typeOfId = InputUtils.getInt("Enter type of ID:");
+
+            switch (typeOfId) {
+                case 1:
+                    typeName = "Cédula";
+                    break;
+                case 2:
+                    typeName = "RUC";
+                    break;
+                default:
+                    System.out.println("Invalid type of ID. Please try again.");
+                    continue; // Volver a solicitar la entrada
+            }
+            break; // Salir del bucle si se ingresa una opción válida
+        }
+
+        return new TypeOfId(typeOfId, typeName);
+    }
+
 
     private static List<Product> initializeProducts() {
         List<Product> products = new ArrayList<>();
