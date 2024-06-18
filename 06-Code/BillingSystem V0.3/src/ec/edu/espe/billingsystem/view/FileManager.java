@@ -51,15 +51,10 @@ public class FileManager {
 
         // Create Customer object
         Customer customer = new Customer(customerId, typeOfId, customerName, customerEmail);
-
         PaymentMethod paymentMethod = selectPaymentMethod();
-
         List<Product> selectedProducts = selectProducts(products);
-
         Invoice invoice = billingManager.createInvoice(customer, selectedProducts, paymentMethod);
-
         displayInvoiceDetails(invoice);
-
         saveInvoiceToFile(invoice);
     }
     
@@ -230,11 +225,11 @@ private static TypeOfId selectTypeOfId() {
 
     private static void displayInvoiceDetails(Invoice invoice) {
         System.out.println("------------------------------------------");
-        System.out.println("| Invoice created                         |");
+        System.out.println("| Factura creada                         |");
         System.out.println("------------------------------------------");
-        System.out.printf("| Type Of ID: %-29s |%n", invoice.getCustomer().getTypeOfId().getTypeName() + " (" + invoice.getCustomer().getTypeOfId().getId() + ")");
-        System.out.printf("| Customer: %-29s |%n", invoice.getCustomer().getName());
-        System.out.printf("| Payment Method: %-23s |%n", invoice.getPaymentMethod().getName());
+        System.out.printf("| Tipo de ID: %-29s |%n", invoice.getCustomer().getTypeOfId().getTypeName() + " (" + invoice.getCustomer().getTypeOfId().getId() + ")");
+        System.out.printf("| Cliente: %-29s |%n", invoice.getCustomer().getName());
+        System.out.printf("| Metodo de pago: %-23s |%n", invoice.getPaymentMethod().getName());
         System.out.println("------------------------------------------");
         System.out.println("| Products:                               |");
         for (InvoiceLine line : invoice.getLines()) {
@@ -242,18 +237,18 @@ private static TypeOfId selectTypeOfId() {
         }
         System.out.println("------------------------------------------");
         System.out.printf("| Subtotal: $%-28.2f |%n", invoice.getSubtotal());
-        System.out.printf("| VAT: $%-33.2f |%n", invoice.getVat());
+        System.out.printf("| IVA: $%-33.2f |%n", invoice.getVat());
         System.out.printf("| Total: $%-31.2f |%n", invoice.getTotal());
         System.out.println("------------------------------------------");
     }
 
     private static void saveInvoiceToFile(Invoice invoice) {
-        String fileName = InputUtils.getString("Enter file name to save invoice:");
+        String fileName = InputUtils.getString("Ingrese el nombre del archivo para guardar la factura:");
         try (FileWriter writer = new FileWriter(fileName)) {
             GSON.toJson(invoice, writer);
-            System.out.println("Invoice saved to " + fileName);
+            System.out.println("Factura guardada en" + fileName);
         } catch (IOException e) {
-            System.out.println("Error saving invoice: " + e.getMessage());
+            System.out.println("Error al guardar la factura" + e.getMessage());
         }
     }
 }
