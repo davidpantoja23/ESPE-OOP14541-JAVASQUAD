@@ -116,7 +116,7 @@ private static PaymentMethod selectPaymentMethod() {
     System.out.println("| 3: Mobile Payment        |");
     System.out.println("---------------------------");
     
-    int paymentMethodId=InputUtils.getInt("Enter payment method ID:");
+    int paymentMethodId;
     String paymentMethodName;
 
     while (true) {
@@ -181,8 +181,8 @@ private static PaymentMethod selectPaymentMethod() {
         System.out.println("------------------------------------------");
         System.out.println("| Invoice created                         |");
         System.out.println("------------------------------------------");
-        System.out.println("|Type Of ID: %-29s |%n", invoice.getCustomer().getTypeOfId().getTypeName());
-        System.out.println("|ID: %-29s |%n", invoice.getCustomer().getTypeOfId().getId() );
+        System.out.printf("| Type Of ID: %-27s |%n", invoice.getCustomer().getTypeOfId().getTypeName());
+        System.out.printf("| ID: %-35s |%n", invoice.getCustomer().getTypeOfId().getId());
         System.out.printf("| Customer: %-29s |%n", invoice.getCustomer().getName());
         System.out.printf("| Payment Method: %-23s |%n", invoice.getPaymentMethod().getName());
         System.out.println("------------------------------------------");
