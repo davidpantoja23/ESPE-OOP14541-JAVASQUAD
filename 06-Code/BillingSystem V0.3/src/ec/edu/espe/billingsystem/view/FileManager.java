@@ -29,32 +29,12 @@ public class FileManager {
         // Enter customer details
         
         String customerId = InputUtils.getString("Enter customer ID:");
-        boolean isValidId = false;
-                 while (!isValidId) {
-            try {
-                customerId = InputUtils.getString("Enter customer ID (must be exactly 10 digits):");
-                if (customerId.length() == 10 && customerId.matches("\\d{10}")) {
-                    isValidId = true; // Marcar como válido y salir del bucle
-                } else {
-                    System.err.println("Invalid input: ID must be a string with exactly 10 digits.");
-                }
-            } catch (IllegalArgumentException e) {
-                System.err.println("Invalid input: " + e.getMessage());
-            }
-        }
+       
+        
         String customerName = InputUtils.getString("Enter customer name:");
         String customerEmail = InputUtils.getString("Enter customer email:");
-        String customerPhoneNumber = InputUtils.getString("Ingrese el numero telefonico");
-        
-
-
-
-        
-                
-        
-  
-        Customer customer = new Customer(customerId, customerName, customerEmail, customerPhoneNumber);
-
+       
+        Customer customer = new Customer (customerId, customerName, customerEmail);
         PaymentMethod paymentMethod = selectPaymentMethod();
 
         List<Product> selectedProducts = selectProducts(products);

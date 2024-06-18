@@ -11,23 +11,13 @@ public class Customer {
     private String id;
     private String name;
     private String email;
-    private String phoneNumber;
 
-    public Customer(String id, String name, String email, String phoneNumber) {
-        
-        Scanner scanner = new Scanner(System.in);
+    public Customer(String id, String name, String email) {
 
-        while (id.length() != 10 || !id.chars().allMatch(Character::isDigit)) {
-            System.out.println("Enter ID (must be exactly 10 digits):");
-            id = scanner.nextLine();
-        }
-
-
-        scanner.close();
         this.id = id;
         this.name = name;
         this.email = email;
-        this.phoneNumber = phoneNumber;
+
         
     }
 
@@ -47,8 +37,10 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" + "id=" + id + ", name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber + '}';
+        return "Customer{" + "id=" + id + ", name=" + name + ", email=" + email + '}';
     }
+
+
 
     /**
      * @return the name
@@ -81,16 +73,7 @@ public class Customer {
     /**
      * @return the phoneNumber
      */
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
 
-    /**
-     * @param phoneNumber the phoneNumber to set
-     */
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
     
 }
 
