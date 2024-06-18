@@ -26,6 +26,7 @@ public class FileManager {
         // Enter customer details
         TypeOfId typeOfId = selectTypeOfId();
 
+<<<<<<< HEAD
         String customerId;
         while (true) {
             customerId = InputUtils.getString("Enter customer ID (10 digits):");
@@ -34,6 +35,15 @@ public class FileManager {
             } else {
                 break;
             }
+=======
+    String customerId;
+    while (true) {
+        customerId = InputUtils.getString("Ingrese el ID del cliente (10 dígitos):");
+        if (customerId.length() != 10) {
+            System.out.println("El ID del cliente debe tener exactamente 10 dígitos. Inténtalo de nuevo.");
+        } else {
+            break;
+>>>>>>> 068580f902465108ec0c6f761d141ce48ec8d03c
         }
 
         String customerName = InputUtils.getString("Enter customer name:");
@@ -52,7 +62,45 @@ public class FileManager {
 
         saveInvoiceToFile(invoice);
     }
+    
+     String customerName;
+        while (true) {
+            customerName = InputUtils.getString("Introduzca el nombre del cliente:");
+            if (!customerName.matches("[a-zA-Z ]+")) {
+                System.out.println("El nombre del cliente debe contener solo letras. Inténtalo de nuevo.";
+            } else {
+                break;
+            }
+        }
 
+<<<<<<< HEAD
+=======
+        String customerEmail;
+        while (true) {
+            customerEmail = InputUtils.getString("Ingrese el correo electrónico del cliente:");
+            if (!customerEmail.matches("^[\\w.-]+@[\\w.-]+\\.\\w+$")) {
+                System.out.println("Formato de correo inválido. Inténtalo de nuevo.");
+            } else {
+                break;
+            }
+        }
+
+    // Create Customer object
+    Customer customer = new Customer(customerId, typeOfId, customerName, customerEmail);
+
+    PaymentMethod paymentMethod = selectPaymentMethod();
+
+    List<Product> selectedProducts = selectProducts(products);
+
+    Invoice invoice = billingManager.createInvoice(customer, selectedProducts, paymentMethod);
+
+    displayInvoiceDetails(invoice);
+
+<<<<<<< HEAD
+    saveInvoiceToFile(invoice);
+}
+
+>>>>>>> 068580f902465108ec0c6f761d141ce48ec8d03c
 private static TypeOfId selectTypeOfId() {
     int typeOfId;
     String typeName = "";
