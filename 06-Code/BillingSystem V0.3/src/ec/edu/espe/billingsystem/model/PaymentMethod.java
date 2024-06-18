@@ -11,7 +11,7 @@ public class PaymentMethod {
 
     public PaymentMethod(int id, String name) {
         this.id = id;
-        this.name = Objects.requireNonNull(name, "Name cannot be null");
+        this.name = Objects.requireNonNull(name, "El nombre no puede ser nulo");
     }
 
     public int getId() {
