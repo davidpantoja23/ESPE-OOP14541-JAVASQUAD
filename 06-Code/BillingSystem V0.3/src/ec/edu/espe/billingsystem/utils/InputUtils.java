@@ -6,7 +6,7 @@ package ec.edu.espe.billingsystem.utils;
 
 /**
  *
- * @author ASUS
+ * @author David Pantoja, JavaSquad, DCCO-ESPE
  */
 import java.util.Scanner;
 
@@ -36,7 +36,7 @@ public class InputUtils {
             scanner.next();
         }
         double value = scanner.nextDouble();
-        scanner.nextLine(); // Clear the buffer
+        scanner.nextLine();       //The clear the buffer
         return value;
     }
 }
