@@ -40,9 +40,26 @@ public static void addBilling() {
             break;
         }
     }
+    
+     String customerName;
+        while (true) {
+            customerName = InputUtils.getString("Enter customer name:");
+            if (!customerName.matches("[a-zA-Z ]+")) {
+                System.out.println("Customer name must contain only letters. Please try again.");
+            } else {
+                break;
+            }
+        }
 
-    String customerName = InputUtils.getString("Enter customer name:");
-    String customerEmail = InputUtils.getString("Enter customer email:");
+        String customerEmail;
+        while (true) {
+            customerEmail = InputUtils.getString("Enter customer email:");
+            if (!customerEmail.matches("^[\\w.-]+@[\\w.-]+\\.\\w+$")) {
+                System.out.println("Invalid email format. Please try again.");
+            } else {
+                break;
+            }
+        }
 
     // Create Customer object
     Customer customer = new Customer(customerId, typeOfId, customerName, customerEmail);
