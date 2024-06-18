@@ -167,21 +167,21 @@ private static TypeOfId selectTypeOfId() {
         String paymentMethodName;
 
         while (true) {
-            System.out.println("Select payment method: (1: Cash, 2: Credit Card, 3: Mobile Payment):");
-            paymentMethodId = InputUtils.getInt("Enter payment method ID:");
+            System.out.println("Seleccione método de pago: (1: Efectivo, 2: Tarjeta de crédito, 3: Pago móvil):");
+            paymentMethodId = InputUtils.getInt("Ingrese el ID del método de pago:");
 
             switch (paymentMethodId) {
                 case 1:
-                    paymentMethodName = "Cash";
+                    paymentMethodName = "Efectivo";
                     break;
                 case 2:
-                    paymentMethodName = "Credit Card";
+                    paymentMethodName = "Tarjeta de credito";
                     break;
                 case 3:
-                    paymentMethodName = "Mobile Payment";
+                    paymentMethodName = "Pago movil";
                     break;
                 default:
-                    System.out.println("Invalid payment method. Please try again.");
+                    System.out.println("Método de pago no válido. Inténtalo de nuevo.");
                     continue;
             }
             break;
@@ -195,14 +195,14 @@ private static TypeOfId selectTypeOfId() {
         boolean addingProducts = true;
         while (addingProducts) {
             System.out.println("------------------------------------------");
-            System.out.println("| Available products                      |");
+            System.out.println("| Productos disponibles                   |");
             System.out.println("------------------------------------------");
             for (Product product : products) {
                 System.out.printf("| %d: %-30s $%.2f |%n", product.getId(), product.getName(), product.getPrice());
             }
             System.out.println("------------------------------------------");
 
-            int productId = InputUtils.getInt("Enter product ID to add to invoice (0 to finish):");
+            int productId = InputUtils.getInt("Ingrese el ID del producto para agregar a la factura (0 para finalizar):");
             if (productId == 0) {
                 addingProducts = false;
                 break;
@@ -214,10 +214,10 @@ private static TypeOfId selectTypeOfId() {
                     .orElse(null);
 
             if (selectedProduct != null) {
-                int quantity = InputUtils.getInt("Enter quantity:");
+                int quantity = InputUtils.getInt("Introduzca la cantidad:");
                 selectedProducts.add(new Product(selectedProduct.getId(), selectedProduct.getName(), selectedProduct.getPrice(), quantity));
             } else {
-                System.out.println("Invalid product ID");
+                System.out.println("ID de producto no válido");
             }
         }
         return selectedProducts;
