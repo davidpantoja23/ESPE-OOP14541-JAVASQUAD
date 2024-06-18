@@ -33,9 +33,9 @@ public static void addBilling() {
 
     String customerId;
     while (true) {
-        customerId = InputUtils.getString("Enter customer ID (10 digits):");
+        customerId = InputUtils.getString("Ingrese el ID del cliente (10 dígitos):");
         if (customerId.length() != 10) {
-            System.out.println("Customer ID must be exactly 10 digits. Please try again.");
+            System.out.println("El ID del cliente debe tener exactamente 10 dígitos. Inténtalo de nuevo.");
         } else {
             break;
         }
@@ -43,9 +43,9 @@ public static void addBilling() {
     
      String customerName;
         while (true) {
-            customerName = InputUtils.getString("Enter customer name:");
+            customerName = InputUtils.getString("Introduzca el nombre del cliente:");
             if (!customerName.matches("[a-zA-Z ]+")) {
-                System.out.println("Customer name must contain only letters. Please try again.");
+                System.out.println("El nombre del cliente debe contener solo letras. Inténtalo de nuevo.";
             } else {
                 break;
             }
@@ -53,9 +53,9 @@ public static void addBilling() {
 
         String customerEmail;
         while (true) {
-            customerEmail = InputUtils.getString("Enter customer email:");
+            customerEmail = InputUtils.getString("Ingrese el correo electrónico del cliente:");
             if (!customerEmail.matches("^[\\w.-]+@[\\w.-]+\\.\\w+$")) {
-                System.out.println("Invalid email format. Please try again.");
+                System.out.println("Formato de correo inválido. Inténtalo de nuevo.");
             } else {
                 break;
             }
