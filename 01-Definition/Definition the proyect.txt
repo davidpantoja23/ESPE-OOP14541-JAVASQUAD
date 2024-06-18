@@ -54,11 +54,6 @@ Requisitos No Funcionales
 	-Respuesta rápida a las acciones del usuario.
 	-Manejo eficiente de datos para evitar demoras.
 
-3.Seguridad
-
-	-Control de acceso para evitar modificaciones no autorizadas.
-	-Protección de datos sensibles.
-
 Diseño del Sistema
 
 1.Clases Principales
@@ -83,7 +78,7 @@ Restaurante: Gestiona el menú y las órdenes.
 	Atributos: lista de productos, lista de órdenes.
 	Métodos: agregarProducto(), modificarProducto(), eliminarProducto(), tomarOrden(), generarFactura().
 
-2.Interfaz Gráfica (GUI)
+2.Interfaz Gráfica a futuro (GUI)
 
 	Panel de menú para visualizar y gestionar productos.
 	Panel de toma de órdenes para agregar ítems a la orden actual.
