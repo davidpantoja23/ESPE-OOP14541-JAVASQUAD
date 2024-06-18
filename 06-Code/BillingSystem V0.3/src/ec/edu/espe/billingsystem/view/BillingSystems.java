@@ -3,47 +3,66 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package ec.edu.espe.billingsystem.view;
+
 import ec.edu.espe.billingsystem.model.Product;
 import ec.edu.espe.billingsystem.utils.InputUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 /**
  *
- * @author David Pantoja, JavaSquad, DCCO-ESPE
+ * Author: David Pantoja, JavaSquad, DCCO-ESPE
  */
 public class BillingSystems {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int number = 0;
-        
-        do {
-            showMenu();
-            number = InputUtils.getInt("Choose an option:");
+        printWelcome();
+
+        try (Scanner scanner = new Scanner(System.in)) {
+            int number = 0;
             
-            switch (number) {
-                case 1:
-                    FileManager.addBilling();
-                    break;
-                case 2:
-                    showFoodMenu();
-                    break;
-                case 3:
-                    System.out.println("Exiting the program. Goodbye!");
-                    break;
-                default:
-                    System.out.println("Invalid option");
-            }
-        } while (number != 3);
-        
-        scanner.close();
+            do {
+                showMenu();
+                number = InputUtils.getInt("Choose an option:");
+                
+                switch (number) {
+                    case 1:
+                        FileManager.addBilling();
+                        break;
+                    case 2:
+                        showFoodMenu();
+                        break;
+                    case 3:
+                        System.out.println("Exiting the program. Goodbye!");
+                        break;
+                    default:
+                        System.out.println("Invalid option");
+                }
+            } while (number != 3);
+        }
     }
     
+    private static void printWelcome() {
+        String programName = "Welcome to the Billing System V 0.3";
+        String welcomeMessage = 
+              "------------------------------------------------\n" +
+              "|                                               |\n" +
+              "|     " + centerText(programName, 24) + "       |\n" +
+              "|                                               |\n" +
+              "------------------------------------------------\n";
+        System.out.println(welcomeMessage);
+    }
+
     private static void showMenu() {
-        System.out.println("Program startup");
-        System.out.println("1: Data entry");
-        System.out.println("2: Food menu");
-        System.out.println("3: Exit");
+        String menu = 
+              "--------------------------------------\n" +
+              "|           Program startup           |\n" +
+              "--------------------------------------\n" +
+              "| 1: Data entry                       |\n" +
+              "| 2: Food menu                        |\n" +
+              "| 3: Exit                             |\n" +
+              "--------------------------------------";
+        System.out.println(menu);
     }
 
     private static void showFoodMenu() {
@@ -58,9 +77,29 @@ public class BillingSystems {
         products.add(new Product(8, "Coffee", 1.99, 200));
         products.add(new Product(9, "Tea", 1.49, 250));
         products.add(new Product(10, "Milkshake", 3.49, 70));
-        
+
+        StringBuilder foodMenu = new StringBuilder();
+        foodMenu.append("--------------------------------------\n")
+                .append("|             Food Menu               |\n")
+                .append("--------------------------------------\n");
+
         for (Product product : products) {
-            System.out.println(product.getId() + ": " + product.getName() + " - $" + product.getPrice());
+            String productInfo = product.getId() + ": " + product.getName() + " - $" + product.getPrice();
+            foodMenu.append("| ")
+                    .append(String.format("%-36s", productInfo))
+                    .append("|\n");
         }
+
+        foodMenu.append("--------------------------------------");
+        System.out.println(foodMenu);
+    }
+
+    private static String centerText(String text, int width) {
+        if (text.length() >= width) {
+            return text;
+        }
+        int leftPadding = (width - text.length()) / 2;
+        int rightPadding = width - text.length() - leftPadding;
+        return " ".repeat(leftPadding) + text + " ".repeat(rightPadding);
     }
 }
