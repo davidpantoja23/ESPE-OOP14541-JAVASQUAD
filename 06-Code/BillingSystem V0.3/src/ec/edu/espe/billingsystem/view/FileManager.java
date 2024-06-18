@@ -61,23 +61,29 @@ public class FileManager {
         return products;
     }
 
-   private static PaymentMethod selectPaymentMethod() {
-    System.out.println("Select payment method (1: Cash, 2: Credit Card, 3: Mobile Payment):");
-    int paymentMethodId = InputUtils.getInt("Enter payment method ID:");
+private static PaymentMethod selectPaymentMethod() {
+    int paymentMethodId;
     String paymentMethodName;
 
-    switch (paymentMethodId) {
-        case 1:
-            paymentMethodName = "Cash";
-            break;
-        case 2:
-            paymentMethodName = "Credit Card";
-            break;
-        case 3:
-            paymentMethodName = "Mobile Payment";
-            break;
-        default:
-            throw new IllegalArgumentException("Invalid payment method");
+    while (true) {
+        System.out.println("Select payment method (1: Cash, 2: Credit Card, 3: Mobile Payment):");
+        paymentMethodId = InputUtils.getInt("Enter payment method ID:");
+
+        switch (paymentMethodId) {
+            case 1:
+                paymentMethodName = "Cash";
+                break;
+            case 2:
+                paymentMethodName = "Credit Card";
+                break;
+            case 3:
+                paymentMethodName = "Mobile Payment";
+                break;
+            default:
+                System.out.println("Invalid payment method. Please try again.");
+                continue; // Volver a solicitar la entrada
+        }
+        break; // Salir del bucle si se ingresa una opción válida
     }
 
     return new PaymentMethod(paymentMethodId, paymentMethodName);

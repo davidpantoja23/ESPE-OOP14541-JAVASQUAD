@@ -47,7 +47,7 @@ public class BillingSystems {
         String welcomeMessage = 
               "------------------------------------------------\n" +
               "|                                               |\n" +
-              "|     " + centerText(programName, 24) + "       |\n" +
+             // "|     " + centerText(programName, 24) + "       |\n" +
               "|                                               |\n" +
               "------------------------------------------------\n";
         System.out.println(welcomeMessage);
@@ -94,12 +94,13 @@ public class BillingSystems {
         System.out.println(foodMenu);
     }
 
-    private static String centerText(String text, int width) {
-        if (text.length() >= width) {
-            return text;
-        }
-        int leftPadding = (width - text.length()) / 2;
-        int rightPadding = width - text.length() - leftPadding;
-        return " ".repeat(leftPadding) + text + " ".repeat(rightPadding);
+   //** private static String centerText(String text, int width) {
+       // if (text.length() >= width) {
+         //   return text;
+        //}
+        //int leftPadding = (width - text.length()) / 2;
+        //int rightPadding = width - text.length() - leftPadding;
+        //return " ".repeat(leftPadding) + text + " ".repeat(rightPadding);
     }
-}
+//}
+//
