@@ -16,7 +16,7 @@ public class InputUtils {
     public static int getInt(String prompt) {
         System.out.println(prompt);
         while (!scanner.hasNextInt()) {
-            System.out.println("Invalid input. Please enter an integer.");
+            System.out.println("Entrada inválida. Por favor ingrese un número entero.");
             scanner.next();
         }
         int value = scanner.nextInt();
@@ -32,9 +32,9 @@ public class InputUtils {
         System.out.println(prompt);
         String input = scanner.nextLine().trim().toLowerCase(); // Lee la entrada del usuario y la convierte a minúsculas
         
-        if (input.equals("si") || input.equals("sí") || input.equals("true") || input.equals("verdadero")) {
+        if (input.equals("si") || input.equals("sí") || input.equals("verdadero") || input.equals("verdadero")) {
             return true;
-        } else if (input.equals("no") || input.equals("false") || input.equals("falso")) {
+        } else if (input.equals("no") || input.equals("falso") || input.equals("falso")) {
             return false;
         } else {
             System.out.println("Respuesta no válida, por favor ingrese 'si' o 'no'.");
@@ -45,7 +45,7 @@ public class InputUtils {
     public static double getDouble(String prompt) {
         System.out.println(prompt);
         while (!scanner.hasNextDouble()) {
-            System.out.println("Invalid input. Please enter a decimal number.");
+            System.out.println("Entrada inválida. Por favor ingrese un número decimal.");
             scanner.next();
         }
         double value = scanner.nextDouble();
