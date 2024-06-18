@@ -26,39 +26,16 @@ public class FileManager {
         // Enter customer details
         TypeOfId typeOfId = selectTypeOfId();
 
-<<<<<<< HEAD
         String customerId;
         while (true) {
-            customerId = InputUtils.getString("Enter customer ID (10 digits):");
-            if (customerId.length() != 10) {
-                System.out.println("Customer ID must be exactly 10 digits. Please try again.");
-            } else {
-                break;
-            }
-=======
-    String customerId;
-    while (true) {
         customerId = InputUtils.getString("Ingrese el ID del cliente (10 dígitos):");
         if (customerId.length() != 10) {
             System.out.println("El ID del cliente debe tener exactamente 10 dígitos. Inténtalo de nuevo.");
         } else {
             break;
->>>>>>> 068580f902465108ec0c6f761d141ce48ec8d03c
         }
 
-        String customerName = InputUtils.getString("Enter customer name:");
-        String customerEmail = InputUtils.getString("Enter customer email:");
-
-        // Create Customer object
-        Customer customer = new Customer(customerId, typeOfId, customerName, customerEmail);
-        PaymentMethod paymentMethod = selectPaymentMethod();
-        List<Product> selectedProducts = selectProducts(products);
-        Invoice invoice = billingManager.createInvoice(customer, selectedProducts, paymentMethod);
-        displayInvoiceDetails(invoice);
-        saveInvoiceToFile(invoice);
-    }
-    
-     String customerName;
+        String customerName;
         while (true) {
             customerName = InputUtils.getString("Introduzca el nombre del cliente:");
             if (!customerName.matches("[a-zA-Z ]+")) {
@@ -68,8 +45,6 @@ public class FileManager {
             }
         }
 
-<<<<<<< HEAD
-=======
         String customerEmail;
         while (true) {
             customerEmail = InputUtils.getString("Ingrese el correo electrónico del cliente:");
@@ -79,30 +54,31 @@ public class FileManager {
                 break;
             }
         }
-
+        // Create Customer object
+        Customer customer = new Customer(customerId, typeOfId, customerName, customerEmail);
+        PaymentMethod paymentMethod = selectPaymentMethod();
+        List<Product> selectedProducts = selectProducts(products);
+        Invoice invoice = billingManager.createInvoice(customer, selectedProducts, paymentMethod);
+        displayInvoiceDetails(invoice);
+        saveInvoiceToFile(invoice);
+    }
+    
     // Create Customer object
     Customer customer = new Customer(customerId, typeOfId, customerName, customerEmail);
-
     PaymentMethod paymentMethod = selectPaymentMethod();
-
     List<Product> selectedProducts = selectProducts(products);
-
     Invoice invoice = billingManager.createInvoice(customer, selectedProducts, paymentMethod);
-
     displayInvoiceDetails(invoice);
-
-<<<<<<< HEAD
     saveInvoiceToFile(invoice);
 }
 
->>>>>>> 068580f902465108ec0c6f761d141ce48ec8d03c
 private static TypeOfId selectTypeOfId() {
     int typeOfId;
     String typeName = "";
 
     while (true) {
-        System.out.println("Select type of document: (1: Cedula, 2: RUC):");
-        typeOfId = InputUtils.getInt("Enter document type: ");
+        System.out.println("Seleccione tipo de documento: (1: Cédula, 2: RUC):");
+        typeOfId = InputUtils.getInt("Introduzca el tipo de documento: ");
 
         switch (typeOfId) {
             case 1:
@@ -112,16 +88,16 @@ private static TypeOfId selectTypeOfId() {
                 typeName = "RUC";
                 break;
             default:
-                System.out.println("Incorrect data, enter again");
+                System.out.println("Datos incorrectos, ingresa nuevamente");
                 continue;
         }
 
         // Validate the ID (Cedula or RUC)
-        String idNumber = InputUtils.getString("Enter " + typeName + " (numbers only):");
+        String idNumber = InputUtils.getString("Ingrese" + typeName + "(solo números):");
 
         // Check if the ID consists only of digits
         if (!idNumber.matches("\\d+")) {
-            System.out.println(typeName + " must contain only digits. Please try again.");
+            System.out.println(typeName + " debe contener sólo dígitos. Inténtalo de nuevo.");
             continue;
         }
 
@@ -231,7 +207,7 @@ private static TypeOfId selectTypeOfId() {
         System.out.printf("| Cliente: %-29s |%n", invoice.getCustomer().getName());
         System.out.printf("| Metodo de pago: %-23s |%n", invoice.getPaymentMethod().getName());
         System.out.println("------------------------------------------");
-        System.out.println("| Products:                               |");
+        System.out.println("| Productos:                              |");
         for (InvoiceLine line : invoice.getLines()) {
             System.out.printf("| %-25s %3d x $%-6.2f |%n", line.getProduct().getName(), line.getQuantity(), line.getProduct().getPrice());
         }
