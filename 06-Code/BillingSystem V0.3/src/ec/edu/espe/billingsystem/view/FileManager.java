@@ -55,21 +55,21 @@ public class FileManager {
         String typeName;
 
         while (true) {
-            System.out.println("Seleccione tipo de documento: (1: Cédula, 2: RUC):");
-            typeOfId = InputUtils.getInt("Ingrese tipo de documento: ");
+            System.out.println("Select type of document: (1: Cedula, 2: RUC):");
+            typeOfId = InputUtils.getInt("Enter document type: ");
 
             switch (typeOfId) {
                 case 1:
-                    typeName = "Cédula";
+                    typeName = "Cedula";
                     break;
                 case 2:
                     typeName = "RUC";
                     break;
                 default:
-                    System.out.println("Dato incorrecto, ingrese nuevamente");
-                    continue; // Volver a solicitar la entrada
+                    System.out.println("Incorrect data, enter again");
+                    continue; 
             }
-            break; // Salir del bucle si se ingresa una opción válida
+            break; 
         }
 
         return new TypeOfId(typeOfId, typeName);
