@@ -60,7 +60,7 @@ public class BillingSystems {
               "--------------------------------------\n" +
               "| 1: Data entry                       |\n" +
               "| 2: Food menu                        |\n" +
-              "| 3: Exit                             |\n" +
+              "| 3: Exit the Program                 |\n" +
               "--------------------------------------";
         System.out.println(menu);
     }
