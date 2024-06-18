@@ -26,28 +26,9 @@ public class FileManager {
         // Enter customer details
         TypeOfId typeOfId = selectTypeOfId();
 
-<<<<<<< HEAD
-        String customerId;
-        while (true) {
-            customerId = InputUtils.getString("Enter customer ID (10 digits):");
-            if (customerId.length() != 10) {
-                System.out.println("Customer ID must be exactly 10 digits. Please try again.");
-            } else {
-                break;
-            }
-=======
-    String customerId;
-    while (true) {
-        customerId = InputUtils.getString("Ingrese el ID del cliente (10 dígitos):");
-        if (customerId.length() != 10) {
-            System.out.println("El ID del cliente debe tener exactamente 10 dígitos. Inténtalo de nuevo.");
-        } else {
-            break;
->>>>>>> 068580f902465108ec0c6f761d141ce48ec8d03c
-        }
-
-        String customerName = InputUtils.getString("Enter customer name:");
-        String customerEmail = InputUtils.getString("Enter customer email:");
+        String customerId = typeOfId.getIdNumber(); // Use the idNumber from TypeOfId
+        String customerName = InputUtils.getString("Nombre cliente:");
+        String customerEmail = InputUtils.getString("Correo electrónico:");
 
         // Create Customer object
         Customer customer = new Customer(customerId, typeOfId, customerName, customerEmail);
@@ -62,80 +43,52 @@ public class FileManager {
 
         saveInvoiceToFile(invoice);
     }
-    
-     String customerName;
+
+    private static TypeOfId selectTypeOfId() {
+        int typeOfId;
+        String typeName = "";
+        String idNumber = "";
+
         while (true) {
-            customerName = InputUtils.getString("Introduzca el nombre del cliente:");
-            if (!customerName.matches("[a-zA-Z ]+")) {
-                System.out.println("El nombre del cliente debe contener solo letras. Inténtalo de nuevo.";
-            } else {
-                break;
+            System.out.println("Seleccione el tipo de documento: (1: Cédula, 2: RUC):");
+            typeOfId = InputUtils.getInt("Ingrese el tipo de documento: ");
+
+            switch (typeOfId) {
+                case 1:
+                    typeName = "Cédula";
+                    break;
+                case 2:
+                    typeName = "RUC";
+                    break;
+                default:
+                    System.out.println("Información incorrecta, ingrese nuevamente");
+                    continue;
             }
-        }
 
-<<<<<<< HEAD
-=======
-        String customerEmail;
-        while (true) {
-            customerEmail = InputUtils.getString("Ingrese el correo electrónico del cliente:");
-            if (!customerEmail.matches("^[\\w.-]+@[\\w.-]+\\.\\w+$")) {
-                System.out.println("Formato de correo inválido. Inténtalo de nuevo.");
-            } else {
-                break;
+            while (true) {
+                idNumber = InputUtils.getString("Ingrese " + typeName + " (únicamente números):");
+
+                // Validate length and digit content
+                if (!idNumber.matches("\\d+")) {
+                    System.out.println("El documento de identidad " + typeName + " debe contener únicamente números. Intente nuevamente.");
+                } else if ((typeOfId == 1 && idNumber.length() != 10) || (typeOfId == 2 && idNumber.length() != 13)) {
+                    System.out.println("Recuerde el RUC tiene 13 dígitos");
+                } else {
+                    // Validate first two digits
+                    int provinceCode = Integer.parseInt(idNumber.substring(0, 2));
+                    if (provinceCode < 1 || provinceCode > 24) {
+                        System.out.println("Los primeros dos dígitos del " + typeName + " deben estar entre 01 y 24. Intente nuevamente.");
+                    } else {
+                        break;
+                    }
+                }
             }
+
+            break;
         }
 
-    // Create Customer object
-    Customer customer = new Customer(customerId, typeOfId, customerName, customerEmail);
-
-    PaymentMethod paymentMethod = selectPaymentMethod();
-
-    List<Product> selectedProducts = selectProducts(products);
-
-    Invoice invoice = billingManager.createInvoice(customer, selectedProducts, paymentMethod);
-
-    displayInvoiceDetails(invoice);
-
-<<<<<<< HEAD
-    saveInvoiceToFile(invoice);
-}
-
->>>>>>> 068580f902465108ec0c6f761d141ce48ec8d03c
-private static TypeOfId selectTypeOfId() {
-    int typeOfId;
-    String typeName = "";
-
-    while (true) {
-        System.out.println("Select type of document: (1: Cedula, 2: RUC):");
-        typeOfId = InputUtils.getInt("Enter document type: ");
-
-        switch (typeOfId) {
-            case 1:
-                typeName = "Cedula";
-                break;
-            case 2:
-                typeName = "RUC";
-                break;
-            default:
-                System.out.println("Incorrect data, enter again");
-                continue;
-        }
-
-        // Validate the ID (Cedula or RUC)
-        String idNumber = InputUtils.getString("Enter " + typeName + " (numbers only):");
-
-        // Check if the ID consists only of digits
-        if (!idNumber.matches("\\d+")) {
-            System.out.println(typeName + " must contain only digits. Please try again.");
-            continue;
-        }
-
-        // Break out of the loop if valid ID
-        break;
+        return new TypeOfId(typeOfId, typeName, idNumber);
     }
-
-    return new TypeOfId(typeOfId, typeName);
-}
 
     private static List<Product> initializeProducts() {
         List<Product> products = new ArrayList<>();
@@ -172,21 +125,21 @@ private static TypeOfId selectTypeOfId() {
         String paymentMethodName;
 
         while (true) {
-            System.out.println("Select payment method: (1: Cash, 2: Credit Card, 3: Mobile Payment):");
-            paymentMethodId = InputUtils.getInt("Enter payment method ID:");
+            System.out.println("Seleccione el método de pago: (1: Efectivo, 2: Tarjeta de crédito, 3: Pago móvil):");
+            paymentMethodId = InputUtils.getInt("Ingrese el método de pago:");
 
             switch (paymentMethodId) {
                 case 1:
-                    paymentMethodName = "Cash";
+                    paymentMethodName = "Efectivo";
                     break;
                 case 2:
-                    paymentMethodName = "Credit Card";
+                    paymentMethodName = "Tarjeta de crédito";
                     break;
                 case 3:
-                    paymentMethodName = "Mobile Payment";
+                    paymentMethodName = "Pago móvil";
                     break;
                 default:
-                    System.out.println("Invalid payment method. Please try again.");
+                    System.out.println("Método de pago inválido. Por favor intente nuevamente.");
                     continue;
             }
             break;
@@ -200,14 +153,14 @@ private static TypeOfId selectTypeOfId() {
         boolean addingProducts = true;
         while (addingProducts) {
             System.out.println("------------------------------------------");
-            System.out.println("| Available products                      |");
+            System.out.println("| Productos disponibles                   |");
             System.out.println("------------------------------------------");
             for (Product product : products) {
                 System.out.printf("| %d: %-30s $%.2f |%n", product.getId(), product.getName(), product.getPrice());
             }
             System.out.println("------------------------------------------");
 
-            int productId = InputUtils.getInt("Enter product ID to add to invoice (0 to finish):");
+            int productId = InputUtils.getInt("Ingrese el ID del producto a añadir (0 para finalizar):");
             if (productId == 0) {
                 addingProducts = false;
                 break;
@@ -219,10 +172,10 @@ private static TypeOfId selectTypeOfId() {
                     .orElse(null);
 
             if (selectedProduct != null) {
-                int quantity = InputUtils.getInt("Enter quantity:");
+                int quantity = InputUtils.getInt("Ingrese la cantidad:");
                 selectedProducts.add(new Product(selectedProduct.getId(), selectedProduct.getName(), selectedProduct.getPrice(), quantity));
             } else {
-                System.out.println("Invalid product ID");
+                System.out.println("ID de producto inválido");
             }
         }
         return selectedProducts;
@@ -230,30 +183,30 @@ private static TypeOfId selectTypeOfId() {
 
     private static void displayInvoiceDetails(Invoice invoice) {
         System.out.println("------------------------------------------");
-        System.out.println("| Invoice created                         |");
+        System.out.println("| Factura creada                           |");
         System.out.println("------------------------------------------");
-        System.out.printf("| Type Of ID: %-29s |%n", invoice.getCustomer().getTypeOfId().getTypeName() + " (" + invoice.getCustomer().getTypeOfId().getId() + ")");
-        System.out.printf("| Customer: %-29s |%n", invoice.getCustomer().getName());
-        System.out.printf("| Payment Method: %-23s |%n", invoice.getPaymentMethod().getName());
+        System.out.printf("| Tipo de documento: %-29s |%n", invoice.getCustomer().getTypeOfId().getTypeName() + " (" + invoice.getCustomer().getTypeOfId().getIdNumber() + ")");
+        System.out.printf("| Cliente: %-29s |%n", invoice.getCustomer().getName());
+        System.out.printf("| Método de pago: %-23s |%n", invoice.getPaymentMethod().getName());
         System.out.println("------------------------------------------");
-        System.out.println("| Products:                               |");
+        System.out.println("| Productos:                               |");
         for (InvoiceLine line : invoice.getLines()) {
             System.out.printf("| %-25s %3d x $%-6.2f |%n", line.getProduct().getName(), line.getQuantity(), line.getProduct().getPrice());
         }
         System.out.println("------------------------------------------");
         System.out.printf("| Subtotal: $%-28.2f |%n", invoice.getSubtotal());
-        System.out.printf("| VAT: $%-33.2f |%n", invoice.getVat());
+        System.out.printf("| IVA: $%-33.2f |%n", invoice.getVat());
         System.out.printf("| Total: $%-31.2f |%n", invoice.getTotal());
         System.out.println("------------------------------------------");
     }
 
     private static void saveInvoiceToFile(Invoice invoice) {
-        String fileName = InputUtils.getString("Enter file name to save invoice:");
+        String fileName = InputUtils.getString("Ingrese el nombre del archivo para guardar la factura:");
         try (FileWriter writer = new FileWriter(fileName)) {
             GSON.toJson(invoice, writer);
-            System.out.println("Invoice saved to " + fileName);
+            System.out.println("Factura guardada en " + fileName);
         } catch (IOException e) {
-            System.out.println("Error saving invoice: " + e.getMessage());
+            System.out.println("Error al guardar la factura: " + e.getMessage());
         }
     }
 }

@@ -21,13 +21,13 @@ public class Invoice {
 
     public Invoice(Customer customer, PaymentMethod paymentMethod) {
         this.typeOfId = typeOfId;
-        this.customer = Objects.requireNonNull(customer, "Customer cannot be null");
-        this.paymentMethod = Objects.requireNonNull(paymentMethod, "Payment method cannot be null");
+        this.customer = Objects.requireNonNull(customer, "Este campo no puede estar vacío");
+        this.paymentMethod = Objects.requireNonNull(paymentMethod, "Este campo no puede estar vacío");
         this.lines = new ArrayList<>();
     }
 
     public void addLine(InvoiceLine line) {
-        lines.add(Objects.requireNonNull(line, "Invoice line cannot be null"));
+        lines.add(Objects.requireNonNull(line, "Este campo no puede estar vacío"));
         updateTotals();
     }
 

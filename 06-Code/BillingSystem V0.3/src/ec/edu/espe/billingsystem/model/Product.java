@@ -14,19 +14,19 @@ public class Product {
 
     public Product(int id, String name, double price, int stock) {
         if (id < 0) {
-            throw new IllegalArgumentException("Product ID cannot be negative");
+            throw new IllegalArgumentException("Debe ingresar un número positivo");
         }
         this.id = id;
 
-        this.name = Objects.requireNonNull(name, "Product name cannot be null");
+        this.name = Objects.requireNonNull(name, "Campo requerido");
 
         if (price <= 0) {
-            throw new IllegalArgumentException("Price must be positive");
+            throw new IllegalArgumentException("Debe ingresar un número positivo");
         }
         this.price = price;
 
         if (stock < 0) {
-            throw new IllegalArgumentException("Stock cannot be negative");
+            throw new IllegalArgumentException("Debe ingresar un número positivo");
         }
         this.stock = stock;
     }
@@ -49,7 +49,7 @@ public class Product {
 
     public void setStock(int stock) {
         if (stock < 0) {
-            throw new IllegalArgumentException("Stock cannot be negative");
+            throw new IllegalArgumentException("Debe ingresar un número positivo");
         }
         this.stock = stock;
     }

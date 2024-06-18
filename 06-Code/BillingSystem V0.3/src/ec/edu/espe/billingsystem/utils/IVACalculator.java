@@ -11,7 +11,7 @@ public class IVACalculator {
 
     public static double calculateIVA(double subtotal) {
         if (subtotal < 0) {
-            throw new IllegalArgumentException("Subtotal cannot be negative");
+            throw new IllegalArgumentException("El subtotal debe ser un valor positivo");
         }
         return subtotal * IVA_RATE;
         

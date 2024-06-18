@@ -12,7 +12,7 @@ public class Report {
 
     public Report(int id, String type, String content) {
         if (id < 0) {
-            throw new IllegalArgumentException("Report ID cannot be negative");
+            throw new IllegalArgumentException("Debe ingresar un número positivo");
         }
         this.id = id;
         this.type = Objects.requireNonNull(type, "Type cannot be null");

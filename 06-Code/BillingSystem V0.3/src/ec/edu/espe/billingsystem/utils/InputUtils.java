@@ -16,7 +16,7 @@ public class InputUtils {
     public static int getInt(String prompt) {
         System.out.println(prompt);
         while (!scanner.hasNextInt()) {
-            System.out.println("Invalid input. Please enter an integer.");
+            System.out.println("Información incorrecta,por favor ingrese nuevamente");
             scanner.next();
         }
         int value = scanner.nextInt();
@@ -45,7 +45,7 @@ public class InputUtils {
     public static double getDouble(String prompt) {
         System.out.println(prompt);
         while (!scanner.hasNextDouble()) {
-            System.out.println("Invalid input. Please enter a decimal number.");
+            System.out.println("Información incorrecta, ingrese un número decimal.");
             scanner.next();
         }
         double value = scanner.nextDouble();

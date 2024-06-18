@@ -12,10 +12,12 @@ package ec.edu.espe.billingsystem.model;
 public class TypeOfId {
     private int id;
     private String typeName;
+    private String idNumber;
 
-    public TypeOfId(int id, String typeName) {
+    public TypeOfId(int id, String typeName, String idNumber) {
         this.id = id;
         this.typeName = typeName;
+        this.idNumber = idNumber;
     }
 
     public int getId() {
@@ -34,8 +36,11 @@ public class TypeOfId {
         this.typeName = typeName;
     }
 
-    @Override
-    public String toString() {
-        return typeName + " (" + id + ")";
+    public String getIdNumber() {
+        return idNumber;
+    }
+
+    public void setIdNumber(String idNumber) {
+        this.idNumber = idNumber;
     }
 }

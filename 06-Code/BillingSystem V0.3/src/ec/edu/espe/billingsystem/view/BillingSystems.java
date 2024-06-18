@@ -56,7 +56,7 @@ public class BillingSystems {
     private static void showMenu() {
         String menu = 
               "--------------------------------------\n" +
-              "|           Program startup           |\n" +
+              "|           CodeFactura               |\n" +
               "--------------------------------------\n" +
               "| 1: Ingreso de datos                 |\n" +
               "| 2: Menú Aristeo                     |\n" +
