@@ -11,11 +11,11 @@ package ec.edu.espe.billingsystem.model;
  */
 public class TypeOfId {
     private int id;
-    private String name;
+    private String typeName;
 
-    public TypeOfId(int id, String name) {
+    public TypeOfId(int id, String typeName) {
         this.id = id;
-        this.name = name;
+        this.typeName = typeName;
     }
 
     public int getId() {
@@ -26,19 +26,16 @@ public class TypeOfId {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTypeName() {
+        return typeName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 
     @Override
     public String toString() {
-        return "TypeOfId{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return typeName + " (" + id + ")";
     }
 }

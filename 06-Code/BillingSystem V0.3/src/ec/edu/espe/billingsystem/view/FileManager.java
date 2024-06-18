@@ -55,8 +55,8 @@ public class FileManager {
         String typeName;
 
         while (true) {
-            System.out.println("Select type of ID (1: Cédula, 2: RUC):");
-            typeOfId = InputUtils.getInt("Enter type of ID:");
+            System.out.println("Seleccione tipo de documento: (1: Cédula, 2: RUC):");
+            typeOfId = InputUtils.getInt("Ingrese tipo de documento: ");
 
             switch (typeOfId) {
                 case 1:
@@ -66,7 +66,7 @@ public class FileManager {
                     typeName = "RUC";
                     break;
                 default:
-                    System.out.println("Invalid type of ID. Please try again.");
+                    System.out.println("Dato incorrecto, ingrese nuevamente");
                     continue; // Volver a solicitar la entrada
             }
             break; // Salir del bucle si se ingresa una opción válida
@@ -151,6 +151,8 @@ private static PaymentMethod selectPaymentMethod() {
 
     private static void displayInvoiceDetails(Invoice invoice) {
         System.out.println("Invoice created:");
+        System.out.println("Type Of ID: " + invoice.getCustomer().getTypeOfId().getTypeName() + ")");
+        System.out.println("ID: "  + invoice.getCustomer().getTypeOfId().getId() + ")");
         System.out.println("Customer: " + invoice.getCustomer().getName());
         System.out.println("Payment Method: " + invoice.getPaymentMethod().getName());
         System.out.println("Products:");

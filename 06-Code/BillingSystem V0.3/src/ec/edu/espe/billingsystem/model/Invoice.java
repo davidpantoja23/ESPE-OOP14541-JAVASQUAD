@@ -14,11 +14,13 @@ public class Invoice {
     private final Customer customer;
     private final List<InvoiceLine> lines;
     private final PaymentMethod paymentMethod;
+    private TypeOfId typeOfId;
     private double subtotal;
     private double vat;
     private double total;
 
     public Invoice(Customer customer, PaymentMethod paymentMethod) {
+        this.typeOfId = typeOfId;
         this.customer = Objects.requireNonNull(customer, "Customer cannot be null");
         this.paymentMethod = Objects.requireNonNull(paymentMethod, "Payment method cannot be null");
         this.lines = new ArrayList<>();
@@ -62,5 +64,12 @@ public class Invoice {
     @Override
     public String toString() {
         return "Invoice{" + "customer=" + customer + ", lines=" + lines + ", paymentMethod=" + paymentMethod + ", subtotal=" + subtotal + ", vat=" + vat + ", total=" + total + '}';
+    }
+
+    /**
+     * @return the typeOfId
+     */
+    public TypeOfId getTypeOfId() {
+        return typeOfId;
     }
 }
