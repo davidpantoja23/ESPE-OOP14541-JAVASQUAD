@@ -55,6 +55,7 @@ public static void addBilling() {
 
     displayInvoiceDetails(invoice);
 
+<<<<<<< HEAD
     saveInvoiceToFile(invoice);
 }
 
@@ -76,6 +77,24 @@ private static TypeOfId selectTypeOfId() {
             default:
                 System.out.println("Opción incorrecta, ingrese nuevamente.");
                 continue; // Volver a solicitar la entrada
+=======
+        while (true) {
+            System.out.println("Select type of document: (1: Cedula, 2: RUC):");
+            typeOfId = InputUtils.getInt("Enter document type: ");
+
+            switch (typeOfId) {
+                case 1:
+                    typeName = "Cedula";
+                    break;
+                case 2:
+                    typeName = "RUC";
+                    break;
+                default:
+                    System.out.println("Incorrect data, enter again");
+                    continue; 
+            }
+            break; 
+>>>>>>> 903b2e69b8e39e8eceb38d7fba1cb6b2901727d0
         }
         break; // Salir del bucle si se ingresa una opción válida
     }
@@ -114,6 +133,15 @@ private static List<Product> initializeProducts() {
 }
 
 private static PaymentMethod selectPaymentMethod() {
+    
+    System.out.println("---------------------------");
+    System.out.println("| Select payment method    |");
+    System.out.println("---------------------------");
+    System.out.println("| 1: Cash                  |");
+    System.out.println("| 2: Credit Card           |");
+    System.out.println("| 3: Mobile Payment        |");
+    System.out.println("---------------------------");
+    
     int paymentMethodId;
     String paymentMethodName;
 
@@ -132,14 +160,20 @@ private static PaymentMethod selectPaymentMethod() {
                 paymentMethodName = "Pago móvil";
                 break;
             default:
+<<<<<<< HEAD
                 System.out.println("Método de pago inválido. Por favor intente nuevamente.");
                 continue; // Volver a solicitar la entrada
+=======
+                System.out.println("Invalid payment method. Please try again.");
+                continue; 
+>>>>>>> 903b2e69b8e39e8eceb38d7fba1cb6b2901727d0
         }
-        break; // Salir del bucle si se ingresa una opción válida
+        break; 
     }
 
     return new PaymentMethod(paymentMethodId, paymentMethodName);
 }
+<<<<<<< HEAD
 
 private static List<Product> selectProducts(List<Product> products) {
     List<Product> selectedProducts = new ArrayList<>();
@@ -149,6 +183,20 @@ private static List<Product> selectProducts(List<Product> products) {
         for (Product product : products) {
             System.out.println(product.getId() + ": " + product.getName() + " - $" + product.getPrice());
         }
+=======
+    private static List<Product> selectProducts(List<Product> products) {
+        List<Product> selectedProducts = new ArrayList<>();
+        boolean addingProducts = true;
+        while (addingProducts) {
+            System.out.println("------------------------------------------");
+            System.out.println("| Available products                      |");
+            System.out.println("------------------------------------------");
+            for (Product product : products) {
+                System.out.printf("| %d: %-30s $%.2f |%n", product.getId(), product.getName(), product.getPrice());
+            }
+            System.out.println("------------------------------------------");
+
+>>>>>>> 903b2e69b8e39e8eceb38d7fba1cb6b2901727d0
             int productId = InputUtils.getInt("Enter product ID to add to invoice (0 to finish):");
             if (productId == 0) {
                 addingProducts = false;
@@ -169,21 +217,27 @@ private static List<Product> selectProducts(List<Product> products) {
         }
         return selectedProducts;
     }
+   
 
     private static void displayInvoiceDetails(Invoice invoice) {
-        System.out.println("Invoice created:");
-        System.out.println("Type Of ID: " + invoice.getCustomer().getTypeOfId().getTypeName());
-        System.out.println("ID: "  + invoice.getCustomer().getTypeOfId().getId() );
-        System.out.println("Customer: " + invoice.getCustomer().getName());
-        System.out.println("Payment Method: " + invoice.getPaymentMethod().getName());
-        System.out.println("Products:");
         
-       for (InvoiceLine line : invoice.getLines()) {
-        System.out.println(line.getProduct().getName() + ": " + line.getQuantity() + " x $" + line.getProduct().getPrice());
-    }
-        System.out.println("Subtotal: $" + invoice.getSubtotal());
-        System.out.println("VAT: $" + invoice.getVat());
-        System.out.println("Total: $" + invoice.getTotal());
+        System.out.println("------------------------------------------");
+        System.out.println("| Invoice created                         |");
+        System.out.println("------------------------------------------");
+        System.out.printf("| Type Of ID: %-27s |%n", invoice.getCustomer().getTypeOfId().getTypeName());
+        System.out.printf("| ID: %-35s |%n", invoice.getCustomer().getTypeOfId().getId());
+        System.out.printf("| Customer: %-29s |%n", invoice.getCustomer().getName());
+        System.out.printf("| Payment Method: %-23s |%n", invoice.getPaymentMethod().getName());
+        System.out.println("------------------------------------------");
+        System.out.println("| Products:                               |");
+        for (InvoiceLine line : invoice.getLines()) {
+            System.out.printf("| %-25s %3d x $%-6.2f |%n", line.getProduct().getName(), line.getQuantity(), line.getProduct().getPrice());
+        }
+        System.out.println("------------------------------------------");
+        System.out.printf("| Subtotal: $%-28.2f |%n", invoice.getSubtotal());
+        System.out.printf("| IVA: $%-33.2f |%n", invoice.getVat());
+        System.out.printf("| Total: $%-31.2f |%n", invoice.getTotal());
+        System.out.println("------------------------------------------");
     }
 
     private static void saveInvoiceToFile(Invoice invoice) {

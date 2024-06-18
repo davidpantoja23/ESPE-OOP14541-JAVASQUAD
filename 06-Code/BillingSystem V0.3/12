@@ -1,0 +1,29 @@
+{
+  "customer": {
+    "id": "1234567890",
+    "typeOfId": {
+      "id": 1,
+      "typeName": "Cedula"
+    },
+    "name": "sfs",
+    "email": "sadsa"
+  },
+  "lines": [
+    {
+      "product": {
+        "id": 1,
+        "name": "Hamburguesa 1/2",
+        "price": 5.99,
+        "stock": 1
+      },
+      "quantity": 1
+    }
+  ],
+  "paymentMethod": {
+    "id": 1,
+    "name": "Cash"
+  },
+  "subtotal": 5.99,
+  "vat": 0.7188,
+  "total": 6.7088
+}

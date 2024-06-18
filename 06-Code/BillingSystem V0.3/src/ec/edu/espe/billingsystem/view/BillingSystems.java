@@ -47,7 +47,7 @@ public class BillingSystems {
         String welcomeMessage = 
               "------------------------------------------------\n" +
               "|                                               |\n" +
-             // "|     " + centerText(programName, 24) + "       |\n" +
+              "|     Welcome to the billing System V 0.3       |\n" +
               "|                                               |\n" +
               "------------------------------------------------\n";
         System.out.println(welcomeMessage);
@@ -67,7 +67,11 @@ public class BillingSystems {
 
     private static void showFoodMenu() {
         List<Product> products = new ArrayList<>();
+<<<<<<< HEAD
          products.add(new Product(1, "Hamburguesa 1/2", 5.99, 100));
+=======
+        products.add(new Product(1, "Hamburguesa 1/2", 5.99, 100));
+>>>>>>> 903b2e69b8e39e8eceb38d7fba1cb6b2901727d0
         products.add(new Product(2, "Porción de papas", 2.99, 200));
         products.add(new Product(3, "Gaseosa litro", 2.00, 300));
         products.add(new Product(3, "Gaseosa", 0.85, 300));
@@ -90,7 +94,11 @@ public class BillingSystems {
         products.add(new Product(20, "12 alitas", 8.99, 70));
         products.add(new Product(21, "24 alitas", 17.89, 40));
         products.add(new Product(22, "Nachos", 3.99, 100));
+<<<<<<< HEAD
         products.add(new Product(23, "Mojito", 3.75, 30));
+=======
+        products.add(new Product(23, "Mojito", 3.75, 50));
+>>>>>>> 903b2e69b8e39e8eceb38d7fba1cb6b2901727d0
 
         StringBuilder foodMenu = new StringBuilder();
         foodMenu.append("--------------------------------------\n")
