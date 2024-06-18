@@ -47,7 +47,7 @@ public class BillingSystems {
         String welcomeMessage = 
               "------------------------------------------------\n" +
               "|                                               |\n" +
-              "|     Welcome to the billing System V 0.3       |\n" +
+              "| Bienvenido al sistema de facturación V 0.3    |\n" +
               "|                                               |\n" +
               "------------------------------------------------\n";
         System.out.println(welcomeMessage);
@@ -56,7 +56,7 @@ public class BillingSystems {
     private static void showMenu() {
         String menu = 
               "--------------------------------------\n" +
-              "|           Program startup           |\n" +
+              "|         Inicio del programa         |\n" +
               "--------------------------------------\n" +
               "| 1: Ingreso de datos                 |\n" +
               "| 2: Menú Aristeo                     |\n" +
