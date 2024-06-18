@@ -25,9 +25,8 @@ public class FileManager {
 
         // Enter customer details
         TypeOfId typeOfId = selectTypeOfId();
-
         String customerId = typeOfId.getIdNumber(); // Use the idNumber from TypeOfId
-        String customerName = InputUtils.getString("Nombre cliente:");
+        String customerName = InputUtils.getString("Nombre del cliente:");
         String customerEmail = InputUtils.getString("Correo electrónico:");
 
         // Create Customer object
@@ -67,7 +66,7 @@ public class FileManager {
                 if (!idNumber.matches("\\d+")) {
                     System.out.println("El documento de identidad " + typeName + " debe contener únicamente números. Intente nuevamente.");
                 } else if ((typeOfId == 1 && idNumber.length() != 10) || (typeOfId == 2 && idNumber.length() != 13)) {
-                    System.out.println("Recuerde el RUC tiene 13 dígitos");
+                    System.out.println("Recuerde el " + typeName + " tiene " + (typeOfId == 1 ? "10" : "13") + " dígitos");
                 } else {
                     // Validate first two digits
                     int provinceCode = Integer.parseInt(idNumber.substring(0, 2));
@@ -90,7 +89,6 @@ public class FileManager {
         products.add(new Product(1, "Hamburguesa 1/2", 5.99, 100));
         products.add(new Product(2, "Porción de papas", 2.99, 200));
         products.add(new Product(3, "Gaseosa litro", 2.00, 300));
-        products.add(new Product(3, "Gaseosa", 0.85, 300));
         products.add(new Product(4, "Hamburguesa 1/4", 4.99, 150));
         products.add(new Product(5, "Porción de ensalada", 2.00, 80));
         products.add(new Product(6, "Chicken fingers", 4.99, 120));
@@ -120,36 +118,21 @@ public class FileManager {
         String paymentMethodName;
 
         while (true) {
-<<<<<<< HEAD
-            System.out.println("Seleccione el método de pago: (1: Efectivo, 2: Tarjeta de crédito, 3: Pago móvil):");
-            paymentMethodId = InputUtils.getInt("Ingrese el método de pago:");
-=======
             System.out.println("Seleccione método de pago: (1: Efectivo, 2: Tarjeta de crédito, 3: Pago móvil):");
             paymentMethodId = InputUtils.getInt("Ingrese el ID del método de pago:");
->>>>>>> 947e8e8b567d8ea6453ad7e427a783eeb8ea36df
 
             switch (paymentMethodId) {
                 case 1:
                     paymentMethodName = "Efectivo";
                     break;
                 case 2:
-<<<<<<< HEAD
                     paymentMethodName = "Tarjeta de crédito";
                     break;
                 case 3:
                     paymentMethodName = "Pago móvil";
                     break;
                 default:
-                    System.out.println("Método de pago inválido. Por favor intente nuevamente.");
-=======
-                    paymentMethodName = "Tarjeta de credito";
-                    break;
-                case 3:
-                    paymentMethodName = "Pago movil";
-                    break;
-                default:
-                    System.out.println("Método de pago no válido. Inténtalo de nuevo.");
->>>>>>> 947e8e8b567d8ea6453ad7e427a783eeb8ea36df
+                    System.out.println("Método de pago no válido. Inténtelo de nuevo.");
                     continue;
             }
             break;
@@ -170,11 +153,7 @@ public class FileManager {
             }
             System.out.println("------------------------------------------");
 
-<<<<<<< HEAD
             int productId = InputUtils.getInt("Ingrese el ID del producto a añadir (0 para finalizar):");
-=======
-            int productId = InputUtils.getInt("Ingrese el ID del producto para agregar a la factura (0 para finalizar):");
->>>>>>> 947e8e8b567d8ea6453ad7e427a783eeb8ea36df
             if (productId == 0) {
                 addingProducts = false;
                 break;
@@ -186,17 +165,10 @@ public class FileManager {
                     .orElse(null);
 
             if (selectedProduct != null) {
-<<<<<<< HEAD
                 int quantity = InputUtils.getInt("Ingrese la cantidad:");
                 selectedProducts.add(new Product(selectedProduct.getId(), selectedProduct.getName(), selectedProduct.getPrice(), quantity));
             } else {
-                System.out.println("ID de producto inválido");
-=======
-                int quantity = InputUtils.getInt("Introduzca la cantidad:");
-                selectedProducts.add(new Product(selectedProduct.getId(), selectedProduct.getName(), selectedProduct.getPrice(), quantity));
-            } else {
                 System.out.println("ID de producto no válido");
->>>>>>> 947e8e8b567d8ea6453ad7e427a783eeb8ea36df
             }
         }
         return selectedProducts;
@@ -204,21 +176,13 @@ public class FileManager {
 
     private static void displayInvoiceDetails(Invoice invoice) {
         System.out.println("------------------------------------------");
-<<<<<<< HEAD
-        System.out.println("| Factura creada                           |");
+        System.out.println("| Factura creada                         |");
         System.out.println("------------------------------------------");
         System.out.printf("| Tipo de documento: %-29s |%n", invoice.getCustomer().getTypeOfId().getTypeName() + " (" + invoice.getCustomer().getTypeOfId().getIdNumber() + ")");
         System.out.printf("| Cliente: %-29s |%n", invoice.getCustomer().getName());
         System.out.printf("| Método de pago: %-23s |%n", invoice.getPaymentMethod().getName());
-=======
-        System.out.println("| Factura creada                         |");
         System.out.println("------------------------------------------");
-        System.out.printf("| Tipo de ID: %-29s |%n", invoice.getCustomer().getTypeOfId().getTypeName() + " (" + invoice.getCustomer().getTypeOfId().getId() + ")");
-        System.out.printf("| Cliente: %-29s |%n", invoice.getCustomer().getName());
-        System.out.printf("| Metodo de pago: %-23s |%n", invoice.getPaymentMethod().getName());
->>>>>>> 947e8e8b567d8ea6453ad7e427a783eeb8ea36df
-        System.out.println("------------------------------------------");
-        System.out.println("| Productos:                               |");
+        System.out.println("| Productos:                             |");
         for (InvoiceLine line : invoice.getLines()) {
             System.out.printf("| %-25s %3d x $%-6.2f |%n", line.getProduct().getName(), line.getQuantity(), line.getProduct().getPrice());
         }
@@ -229,19 +193,14 @@ public class FileManager {
         System.out.println("------------------------------------------");
     }
 
-    private static void saveInvoiceToFile(Invoice invoice) {
-        String fileName = InputUtils.getString("Ingrese el nombre del archivo para guardar la factura:");
-        try (FileWriter writer = new FileWriter(fileName)) {
-            GSON.toJson(invoice, writer);
-<<<<<<< HEAD
-            System.out.println("Factura guardada en " + fileName);
-        } catch (IOException e) {
-            System.out.println("Error al guardar la factura: " + e.getMessage());
-=======
-            System.out.println("Factura guardada en" + fileName);
-        } catch (IOException e) {
-            System.out.println("Error al guardar la factura" + e.getMessage());
->>>>>>> 947e8e8b567d8ea6453ad7e427a783eeb8ea36df
-        }
+private static void saveInvoiceToFile(Invoice invoice) {
+    String fileName = InputUtils.getString("Ingrese el nombre del archivo para guardar la factura:");
+    try (FileWriter writer = new FileWriter(fileName)) {
+        GSON.toJson(invoice, writer);
+        System.out.println("Factura guardada en " + fileName);
+    } catch (IOException e) {
+        System.out.println("Error al guardar la factura: " + e.getMessage());
     }
 }
+}
+

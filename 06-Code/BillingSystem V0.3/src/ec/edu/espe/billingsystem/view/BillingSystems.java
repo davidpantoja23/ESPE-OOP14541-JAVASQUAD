@@ -6,6 +6,7 @@ package ec.edu.espe.billingsystem.view;
 
 import ec.edu.espe.billingsystem.model.Product;
 import ec.edu.espe.billingsystem.utils.InputUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -19,8 +20,8 @@ public class BillingSystems {
         printWelcome();
 
         try (Scanner scanner = new Scanner(System.in)) {
-            int number = 0;
-            
+            int number;
+
             do {
                 showMenu();
                 number = InputUtils.getInt("Escoja una opción:");
@@ -43,7 +44,6 @@ public class BillingSystems {
     }
     
     private static void printWelcome() {
-        String programName = "Bienvenido al sistema de facturación V 0.3";
         String welcomeMessage = 
               "------------------------------------------------\n" +
               "|                                               |\n" +
@@ -56,11 +56,7 @@ public class BillingSystems {
     private static void showMenu() {
         String menu = 
               "--------------------------------------\n" +
-<<<<<<< HEAD
-              "|           CodeFactura               |\n" +
-=======
               "|         Inicio del programa         |\n" +
->>>>>>> 947e8e8b567d8ea6453ad7e427a783eeb8ea36df
               "--------------------------------------\n" +
               "| 1: Ingreso de datos                 |\n" +
               "| 2: Menú Aristeo                     |\n" +
@@ -72,11 +68,9 @@ public class BillingSystems {
     private static void showFoodMenu() {
         List<Product> products = new ArrayList<>();
 
-         products.add(new Product(1, "Hamburguesa 1/2", 5.99, 100));
-         products.add(new Product(1, "Hamburguesa 1/2", 5.99, 100));
+        products.add(new Product(1, "Hamburguesa 1/2", 5.99, 100));
         products.add(new Product(2, "Porción de papas", 2.99, 200));
         products.add(new Product(3, "Gaseosa litro", 2.00, 300));
-        products.add(new Product(3, "Gaseosa", 0.85, 300));
         products.add(new Product(4, "Hamburguesa 1/4", 4.99, 150));
         products.add(new Product(5, "Porción de ensalada", 2.00, 80));
         products.add(new Product(6, "Chicken fingers", 4.99, 120));
@@ -96,14 +90,11 @@ public class BillingSystems {
         products.add(new Product(20, "12 alitas", 8.99, 70));
         products.add(new Product(21, "24 alitas", 17.89, 40));
         products.add(new Product(22, "Nachos", 3.99, 100));
-
         products.add(new Product(23, "Mojito", 3.75, 30));
-
-
 
         StringBuilder foodMenu = new StringBuilder();
         foodMenu.append("--------------------------------------\n")
-                .append("|             Menú Aristeo            |\n")
+                .append("|             Menú Aristeo           |\n")
                 .append("--------------------------------------\n");
 
         for (Product product : products) {
@@ -116,14 +107,4 @@ public class BillingSystems {
         foodMenu.append("--------------------------------------");
         System.out.println(foodMenu);
     }
-
-   //** private static String centerText(String text, int width) {
-       // if (text.length() >= width) {
-         //   return text;
-        //}
-        //int leftPadding = (width - text.length()) / 2;
-        //int rightPadding = width - text.length() - leftPadding;
-        //return " ".repeat(leftPadding) + text + " ".repeat(rightPadding);
-    }
-//}
-//
+}

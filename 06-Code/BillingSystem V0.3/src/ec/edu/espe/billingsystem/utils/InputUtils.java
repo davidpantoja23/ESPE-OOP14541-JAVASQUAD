@@ -16,15 +16,11 @@ public class InputUtils {
     public static int getInt(String prompt) {
         System.out.println(prompt);
         while (!scanner.hasNextInt()) {
-<<<<<<< HEAD
-            System.out.println("Información incorrecta,por favor ingrese nuevamente");
-=======
             System.out.println("Entrada inválida. Por favor ingrese un número entero.");
->>>>>>> 947e8e8b567d8ea6453ad7e427a783eeb8ea36df
             scanner.next();
         }
         int value = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine(); // Limpiar el buffer
         return value;
     }
 
@@ -32,13 +28,14 @@ public class InputUtils {
         System.out.println(prompt);
         return scanner.nextLine();
     }
+
     public static boolean getBoolean(String prompt) {
         System.out.println(prompt);
         String input = scanner.nextLine().trim().toLowerCase(); // Lee la entrada del usuario y la convierte a minúsculas
-        
-        if (input.equals("si") || input.equals("sí") || input.equals("verdadero") || input.equals("verdadero")) {
+
+        if (input.equals("si") || input.equals("sí") || input.equals("verdadero")) {
             return true;
-        } else if (input.equals("no") || input.equals("falso") || input.equals("falso")) {
+        } else if (input.equals("no") || input.equals("falso")) {
             return false;
         } else {
             System.out.println("Respuesta no válida, por favor ingrese 'si' o 'no'.");
@@ -49,15 +46,11 @@ public class InputUtils {
     public static double getDouble(String prompt) {
         System.out.println(prompt);
         while (!scanner.hasNextDouble()) {
-<<<<<<< HEAD
-            System.out.println("Información incorrecta, ingrese un número decimal.");
-=======
             System.out.println("Entrada inválida. Por favor ingrese un número decimal.");
->>>>>>> 947e8e8b567d8ea6453ad7e427a783eeb8ea36df
             scanner.next();
         }
         double value = scanner.nextDouble();
-        scanner.nextLine();       //The clear the buffer
+        scanner.nextLine(); // Limpiar el buffer
         return value;
     }
 }

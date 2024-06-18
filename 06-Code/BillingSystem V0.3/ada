@@ -1,0 +1,35 @@
+{
+  "customer": {
+    "customerId": "1720759745",
+    "typeOfId": {
+      "id": 1,
+      "typeName": "Cédula",
+      "idNumber": "1720759745"
+    },
+    "name": "nathaly ",
+    "email": "asdasd"
+  },
+  "lines": [
+    {
+      "product": {
+        "id": 23,
+        "name": "Mojito",
+        "price": 3.75,
+        "stock": 32
+      },
+      "quantity": 32
+    }
+  ],
+  "paymentMethod": {
+    "id": 1,
+    "name": "Efectivo"
+  },
+  "typeOfId": {
+    "id": 1,
+    "typeName": "Cédula",
+    "idNumber": "1720759745"
+  },
+  "subtotal": 120.0,
+  "vat": 18.0,
+  "total": 138.0
+}
