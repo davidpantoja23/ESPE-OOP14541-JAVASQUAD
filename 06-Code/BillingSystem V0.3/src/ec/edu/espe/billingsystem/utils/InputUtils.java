@@ -28,6 +28,19 @@ public class InputUtils {
         System.out.println(prompt);
         return scanner.nextLine();
     }
+    public static boolean getBoolean(String prompt) {
+        System.out.println(prompt);
+        String input = scanner.nextLine().trim().toLowerCase(); // Lee la entrada del usuario y la convierte a minúsculas
+        
+        if (input.equals("si") || input.equals("sí") || input.equals("true") || input.equals("verdadero")) {
+            return true;
+        } else if (input.equals("no") || input.equals("false") || input.equals("falso")) {
+            return false;
+        } else {
+            System.out.println("Respuesta no válida, por favor ingrese 'si' o 'no'.");
+            return getBoolean(prompt); // Vuelve a solicitar la entrada si no es válida
+        }
+    }
 
     public static double getDouble(String prompt) {
         System.out.println(prompt);
