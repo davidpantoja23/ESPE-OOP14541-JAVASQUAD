@@ -15,175 +15,138 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-
-/**
- * @author David Pantoja, JavaSquad, DCCO-ESPE
- */
 
 public class FileManager {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final BillingManager billingManager = new BillingManager();
 
-public static void addBilling() {
-    List<Product> products = initializeProducts();
+    public static void addBilling() {
+        List<Product> products = initializeProducts();
 
-    // Enter customer details
-    TypeOfId typeOfId = selectTypeOfId();
+        // Enter customer details
+        TypeOfId typeOfId = selectTypeOfId();
 
-    String customerId;
-    while (true) {
-        customerId = InputUtils.getString("Enter customer ID (10 digits):");
-        if (customerId.length() != 10) {
-            System.out.println("Customer ID must be exactly 10 digits. Please try again.");
-        } else {
-            break;
+        String customerId;
+        while (true) {
+            customerId = InputUtils.getString("Enter customer ID (10 digits):");
+            if (customerId.length() != 10) {
+                System.out.println("Customer ID must be exactly 10 digits. Please try again.");
+            } else {
+                break;
+            }
         }
+
+        String customerName = InputUtils.getString("Enter customer name:");
+        String customerEmail = InputUtils.getString("Enter customer email:");
+
+        // Create Customer object
+        Customer customer = new Customer(customerId, typeOfId, customerName, customerEmail);
+
+        PaymentMethod paymentMethod = selectPaymentMethod();
+
+        List<Product> selectedProducts = selectProducts(products);
+
+        Invoice invoice = billingManager.createInvoice(customer, selectedProducts, paymentMethod);
+
+        displayInvoiceDetails(invoice);
+
+        saveInvoiceToFile(invoice);
     }
-
-    String customerName = InputUtils.getString("Enter customer name:");
-    String customerEmail = InputUtils.getString("Enter customer email:");
-
-    // Create Customer object
-    Customer customer = new Customer(customerId, typeOfId, customerName, customerEmail);
-
-    PaymentMethod paymentMethod = selectPaymentMethod();
-
-    List<Product> selectedProducts = selectProducts(products);
-
-    Invoice invoice = billingManager.createInvoice(customer, selectedProducts, paymentMethod);
-
-    displayInvoiceDetails(invoice);
-
-<<<<<<< HEAD
-    saveInvoiceToFile(invoice);
-}
 
 private static TypeOfId selectTypeOfId() {
     int typeOfId;
     String typeName = "";
 
     while (true) {
-        System.out.println("Seleccione tipo de documento: (1: Cédula, 2: RUC):");
-        typeOfId = InputUtils.getInt("Ingrese tipo de documento:");
+        System.out.println("Select type of document: (1: Cedula, 2: RUC):");
+        typeOfId = InputUtils.getInt("Enter document type: ");
 
         switch (typeOfId) {
             case 1:
-                typeName = "Cédula";
+                typeName = "Cedula";
                 break;
             case 2:
                 typeName = "RUC";
                 break;
             default:
-                System.out.println("Opción incorrecta, ingrese nuevamente.");
-                continue; // Volver a solicitar la entrada
-=======
-        while (true) {
-            System.out.println("Select type of document: (1: Cedula, 2: RUC):");
-            typeOfId = InputUtils.getInt("Enter document type: ");
-
-            switch (typeOfId) {
-                case 1:
-                    typeName = "Cedula";
-                    break;
-                case 2:
-                    typeName = "RUC";
-                    break;
-                default:
-                    System.out.println("Incorrect data, enter again");
-                    continue; 
-            }
-            break; 
->>>>>>> 903b2e69b8e39e8eceb38d7fba1cb6b2901727d0
+                System.out.println("Incorrect data, enter again");
+                continue;
         }
-        break; // Salir del bucle si se ingresa una opción válida
+
+        // Validate the ID (Cedula or RUC)
+        String idNumber = InputUtils.getString("Enter " + typeName + " (numbers only):");
+
+        // Check if the ID consists only of digits
+        if (!idNumber.matches("\\d+")) {
+            System.out.println(typeName + " must contain only digits. Please try again.");
+            continue;
+        }
+
+        // Break out of the loop if valid ID
+        break;
     }
 
     return new TypeOfId(typeOfId, typeName);
 }
 
-private static List<Product> initializeProducts() {
-    List<Product> products = new ArrayList<>();
-    products.add(new Product(1, "Hamburguesa 1/2", 5.99, 100));
-    products.add(new Product(2, "Porción de papas", 2.99, 200));
-    products.add(new Product(3, "Gaseosa litro", 2.00, 300));
-    products.add(new Product(3, "Gaseosa", 0.85, 300));
-    products.add(new Product(4, "Hamburguesa 1/4", 4.99, 150));
-    products.add(new Product(5, "Porción de ensalada", 2.00, 80));
-    products.add(new Product(6, "Chicken fingers", 4.99, 120));
-    products.add(new Product(7, "Soda italiana", 2.49, 90));
-    products.add(new Product(8, "Filete de pollo", 4.99, 200));
-    products.add(new Product(9, "Costillita 300", 4.99, 250));
-    products.add(new Product(10, "Costilla 500", 8.49, 70));
-    products.add(new Product(11, "Milkshake", 3.75, 100));
-    products.add(new Product(12, "Vaso limonada", 2.45, 100));
-    products.add(new Product(13, "Jarra limonada", 5.00, 200));
-    products.add(new Product(14, "Mochi", 1.00, 50));
-    products.add(new Product(15, "Promoción costilla", 19.99, 100));
-    products.add(new Product(16, "Promo día", 5.99, 50));
-    products.add(new Product(17, "Bife", 8.99, 50));
-    products.add(new Product(18, "Chuleta", 4.99, 60));
-    products.add(new Product(19, "8 alitas", 5.99, 100));
-    products.add(new Product(20, "12 alitas", 8.99, 70));
-    products.add(new Product(21, "24 alitas", 17.89, 40));
-    products.add(new Product(22, "Nachos", 3.99, 100));
-    products.add(new Product(23, "Mojito", 3.75, 30));
+    private static List<Product> initializeProducts() {
+        List<Product> products = new ArrayList<>();
+        products.add(new Product(1, "Hamburguesa 1/2", 5.99, 100));
+        products.add(new Product(2, "Porción de papas", 2.99, 200));
+        products.add(new Product(3, "Gaseosa litro", 2.00, 300));
+        products.add(new Product(3, "Gaseosa", 0.85, 300));
+        products.add(new Product(4, "Hamburguesa 1/4", 4.99, 150));
+        products.add(new Product(5, "Porción de ensalada", 2.00, 80));
+        products.add(new Product(6, "Chicken fingers", 4.99, 120));
+        products.add(new Product(7, "Soda italiana", 2.49, 90));
+        products.add(new Product(8, "Filete de pollo", 4.99, 200));
+        products.add(new Product(9, "Costillita 300", 4.99, 250));
+        products.add(new Product(10, "Costilla 500", 8.49, 70));
+        products.add(new Product(11, "Milkshake", 3.75, 100));
+        products.add(new Product(12, "Vaso limonada", 2.45, 100));
+        products.add(new Product(13, "Jarra limonada", 5.00, 200));
+        products.add(new Product(14, "Mochi", 1.00, 50));
+        products.add(new Product(15, "Promoción costilla", 19.99, 100));
+        products.add(new Product(16, "Promo día", 5.99, 50));
+        products.add(new Product(17, "Bife", 8.99, 50));
+        products.add(new Product(18, "Chuleta", 4.99, 60));
+        products.add(new Product(19, "8 alitas", 5.99, 100));
+        products.add(new Product(20, "12 alitas", 8.99, 70));
+        products.add(new Product(21, "24 alitas", 17.89, 40));
+        products.add(new Product(22, "Nachos", 3.99, 100));
+        products.add(new Product(23, "Mojito", 3.75, 30));
 
-    return products;
-}
-
-private static PaymentMethod selectPaymentMethod() {
-    
-    System.out.println("---------------------------");
-    System.out.println("| Select payment method    |");
-    System.out.println("---------------------------");
-    System.out.println("| 1: Cash                  |");
-    System.out.println("| 2: Credit Card           |");
-    System.out.println("| 3: Mobile Payment        |");
-    System.out.println("---------------------------");
-    
-    int paymentMethodId;
-    String paymentMethodName;
-
-    while (true) {
-        System.out.println("Seleccione método de pago: (1: Efectivo, 2: Tarjeta de crédito, 3: Pago móvil):");
-        paymentMethodId = InputUtils.getInt("Ingrese método de pago:");
-
-        switch (paymentMethodId) {
-            case 1:
-                paymentMethodName = "Efectivo";
-                break;
-            case 2:
-                paymentMethodName = "Tarjeta de crédito";
-                break;
-            case 3:
-                paymentMethodName = "Pago móvil";
-                break;
-            default:
-<<<<<<< HEAD
-                System.out.println("Método de pago inválido. Por favor intente nuevamente.");
-                continue; // Volver a solicitar la entrada
-=======
-                System.out.println("Invalid payment method. Please try again.");
-                continue; 
->>>>>>> 903b2e69b8e39e8eceb38d7fba1cb6b2901727d0
-        }
-        break; 
+        return products;
     }
 
-    return new PaymentMethod(paymentMethodId, paymentMethodName);
-}
-<<<<<<< HEAD
+    private static PaymentMethod selectPaymentMethod() {
+        int paymentMethodId;
+        String paymentMethodName;
 
-private static List<Product> selectProducts(List<Product> products) {
-    List<Product> selectedProducts = new ArrayList<>();
-    boolean addingProducts = true;
-    while (addingProducts) {
-        System.out.println("Productos disponibles:");
-        for (Product product : products) {
-            System.out.println(product.getId() + ": " + product.getName() + " - $" + product.getPrice());
+        while (true) {
+            System.out.println("Select payment method: (1: Cash, 2: Credit Card, 3: Mobile Payment):");
+            paymentMethodId = InputUtils.getInt("Enter payment method ID:");
+
+            switch (paymentMethodId) {
+                case 1:
+                    paymentMethodName = "Cash";
+                    break;
+                case 2:
+                    paymentMethodName = "Credit Card";
+                    break;
+                case 3:
+                    paymentMethodName = "Mobile Payment";
+                    break;
+                default:
+                    System.out.println("Invalid payment method. Please try again.");
+                    continue;
+            }
+            break;
         }
-=======
+
+        return new PaymentMethod(paymentMethodId, paymentMethodName);
+    }
+
     private static List<Product> selectProducts(List<Product> products) {
         List<Product> selectedProducts = new ArrayList<>();
         boolean addingProducts = true;
@@ -196,7 +159,6 @@ private static List<Product> selectProducts(List<Product> products) {
             }
             System.out.println("------------------------------------------");
 
->>>>>>> 903b2e69b8e39e8eceb38d7fba1cb6b2901727d0
             int productId = InputUtils.getInt("Enter product ID to add to invoice (0 to finish):");
             if (productId == 0) {
                 addingProducts = false;
@@ -217,15 +179,12 @@ private static List<Product> selectProducts(List<Product> products) {
         }
         return selectedProducts;
     }
-   
 
     private static void displayInvoiceDetails(Invoice invoice) {
-        
         System.out.println("------------------------------------------");
         System.out.println("| Invoice created                         |");
         System.out.println("------------------------------------------");
-        System.out.printf("| Type Of ID: %-27s |%n", invoice.getCustomer().getTypeOfId().getTypeName());
-        System.out.printf("| ID: %-35s |%n", invoice.getCustomer().getTypeOfId().getId());
+        System.out.printf("| Type Of ID: %-29s |%n", invoice.getCustomer().getTypeOfId().getTypeName() + " (" + invoice.getCustomer().getTypeOfId().getId() + ")");
         System.out.printf("| Customer: %-29s |%n", invoice.getCustomer().getName());
         System.out.printf("| Payment Method: %-23s |%n", invoice.getPaymentMethod().getName());
         System.out.println("------------------------------------------");
@@ -235,7 +194,7 @@ private static List<Product> selectProducts(List<Product> products) {
         }
         System.out.println("------------------------------------------");
         System.out.printf("| Subtotal: $%-28.2f |%n", invoice.getSubtotal());
-        System.out.printf("| IVA: $%-33.2f |%n", invoice.getVat());
+        System.out.printf("| VAT: $%-33.2f |%n", invoice.getVat());
         System.out.printf("| Total: $%-31.2f |%n", invoice.getTotal());
         System.out.println("------------------------------------------");
     }
