@@ -8,7 +8,7 @@ import com.google.gson.JsonObject;
 
 /**
  *
- * @author David Pantoja, JavaSquad, DCCO-ESPE
+ * @author JavaSquad, DCCO-ESPE
  */
 import java.util.ArrayList;
 import java.util.List;
