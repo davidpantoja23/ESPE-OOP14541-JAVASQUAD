@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  *
- * Author:  JavaSquad, DCCO-ESPE
+ * @author:  JavaSquad, DCCO-ESPE
  */
 
 public class FileManager {
