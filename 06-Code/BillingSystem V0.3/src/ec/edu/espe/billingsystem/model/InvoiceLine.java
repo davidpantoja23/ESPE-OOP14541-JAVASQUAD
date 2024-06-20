@@ -5,7 +5,7 @@ import java.util.Objects;
 
 /**
  * Represents a line item in an invoice.
- * Author: David Pantoja, JavaSquad, DCCO-ESPE
+ * @author: JavaSquad, DCCO-ESPE
  */
 public class InvoiceLine {
     private final Product product;
