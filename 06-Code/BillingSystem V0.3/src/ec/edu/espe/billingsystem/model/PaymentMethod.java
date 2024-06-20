@@ -4,7 +4,7 @@ import java.util.Objects;
 
 /**
  * Represents a payment method.
- * Author: David Pantoja, JavaSquad, DCCO-ESPE
+ * @author: JavaSquad, DCCO-ESPE
  */
 public class PaymentMethod {
     private final int id;
