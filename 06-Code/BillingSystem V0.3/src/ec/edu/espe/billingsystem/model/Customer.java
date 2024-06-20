@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author David Pantoja, JavaSquad, DCCO-ESPE
+ * @author JavaSquad, DCCO-ESPE
  */
 public class Customer {
     private String customerId;
