@@ -8,7 +8,7 @@ import java.util.Objects;
 
 /**
  *
- * @author David Pantoja, JavaSquad, DCCO-ESPE
+ * @author JavaSquad, DCCO-ESPE
  */
 
 public class InventoryManager {
