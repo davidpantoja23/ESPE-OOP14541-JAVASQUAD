@@ -4,7 +4,7 @@ package ec.edu.espe.billingsystem.controller;
 
 /**
  *
- * @author David Pantoja, JavaSquad, DCCO-ESPE
+ * @author JavaSquad, DCCO-ESPE
  */
 
 
