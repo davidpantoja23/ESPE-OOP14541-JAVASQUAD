@@ -2,6 +2,3 @@ Project Definition: Billing System for Aristeo
 
 The project consists of developing a billing system for a restaurant using object-oriented programming (OOP) in Java. This system will be in charge of managing customer orders, the system asks the user to enter data for the invoice, calculate the total to pay, the subtotal, applying 15% VAT of the order and generate detailed invoices with the data in files. json, generating an invoice with all the necessary customer data.
 
-
-
-.
