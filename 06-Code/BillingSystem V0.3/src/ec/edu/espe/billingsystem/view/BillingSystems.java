@@ -19,6 +19,7 @@ import java.util.Scanner;
 import java.util.Scanner;
 
 public class BillingSystems {
+
     public static void main(String[] args) {
         printWelcome();
 

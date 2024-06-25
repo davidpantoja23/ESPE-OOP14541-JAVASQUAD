@@ -51,4 +51,12 @@ public class Customer {
     public void setEmail(String email) {
         this.email = email;
     }
+<<<<<<< HEAD
+
+    AbstractStringBuilder getId() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
+=======
+}
+>>>>>>> 6215c0107f4ddb8df1c725b2abcdd92ba03c4741
