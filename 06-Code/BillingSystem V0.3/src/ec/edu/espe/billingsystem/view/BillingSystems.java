@@ -58,7 +58,7 @@ public class BillingSystems {
                     default:
                         System.out.println("Opción inválida");
                 }
-            } while (number != 3);
+            } while (number != 4);
         }
     }
     
