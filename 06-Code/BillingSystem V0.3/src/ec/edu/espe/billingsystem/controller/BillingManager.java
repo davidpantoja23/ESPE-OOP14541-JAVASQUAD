@@ -8,6 +8,8 @@ package ec.edu.espe.billingsystem.controller;
  */
 
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import ec.edu.espe.billingsystem.model.Customer;
 import ec.edu.espe.billingsystem.model.Invoice;
 import ec.edu.espe.billingsystem.model.InvoiceLine;
@@ -21,6 +23,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class BillingManager {
+    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+
     public Invoice createInvoice(Customer customer, List<Product> products, PaymentMethod paymentMethod) {
         Objects.requireNonNull(customer, "Debe ingresar información en este campo");
         Objects.requireNonNull(products, "Debe seleccionar un producto");
@@ -38,7 +42,7 @@ public class BillingManager {
         Objects.requireNonNull(invoice, "Ingrese datos para facturación");
         Objects.requireNonNull(fileName, "Debe ingresar el nombre del documento");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-            writer.write(invoice.toString());
+            writer.write(GSON.toJson(invoice));
         } catch (IOException e) {
             System.err.println("Un error ha ocurrido cuando se guardaba la factura: " + e.getMessage());
             e.printStackTrace();

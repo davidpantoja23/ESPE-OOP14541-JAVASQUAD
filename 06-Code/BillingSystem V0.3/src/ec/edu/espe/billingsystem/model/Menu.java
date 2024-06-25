@@ -21,7 +21,8 @@ public class Menu {
               "--------------------------------------\n" +
               "| 1: Ingreso de datos                 |\n" +
               "| 2: Menú Aristeo                     |\n" +
-              "| 3: Salir del programa               |\n" +
+              "| 3: Ver reporte                      |\n" +  
+              "| 4: Salir del programa               |\n" +
               "--------------------------------------";
         System.out.println(menu);
     }

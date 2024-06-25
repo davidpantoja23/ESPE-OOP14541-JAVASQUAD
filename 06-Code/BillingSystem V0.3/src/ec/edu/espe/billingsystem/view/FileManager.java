@@ -96,7 +96,7 @@ public class FileManager {
                 if (!idNumber.matches("\\d+")) {
                     System.out.println(typeName + " debe contener únicamente números. Intente nuevamente.");
                 } else if ((typeOfId == 1 && idNumber.length() != 10) || (typeOfId == 2 && idNumber.length() != 13)) {
-                    System.out.println("La longitud del " + typeName + " no es correcta. Intente nuevamente.");
+                    System.out.println("La cantidad de ditigos del número de " + typeName + " no es correcta. Intente nuevamente.");
                 } else {
                     // Validate first two digits
                     int provinceCode = Integer.parseInt(idNumber.substring(0, 2));
