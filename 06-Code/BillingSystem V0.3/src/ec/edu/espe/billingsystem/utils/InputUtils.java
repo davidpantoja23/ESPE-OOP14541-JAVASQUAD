@@ -6,7 +6,7 @@ package ec.edu.espe.billingsystem.utils;
 
 /**
  *
- * @author David Pantoja, JavaSquad, DCCO-ESPE
+ * @author JavaSquad, DCCO-ESPE
  */
 import java.util.Scanner;
 

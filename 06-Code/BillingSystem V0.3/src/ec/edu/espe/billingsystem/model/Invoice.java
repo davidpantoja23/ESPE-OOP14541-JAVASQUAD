@@ -7,7 +7,7 @@ import java.util.Objects;
 
 /**
  * Represents an invoice.
- * Author: David Pantoja, JavaSquad, DCCO-ESPE
+ * @author: JavaSquad, DCCO-ESPE
  */
 public class Invoice {
     private final Customer customer;

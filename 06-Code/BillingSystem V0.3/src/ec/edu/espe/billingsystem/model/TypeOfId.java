@@ -7,7 +7,7 @@ package ec.edu.espe.billingsystem.model;
 
 /**
  *
- * @author Simone Medina, JavaSquad, DCCO-ESPE
+ * @author JavaSquad, DCCO-ESPE
  */
 public class TypeOfId {
     private int id;

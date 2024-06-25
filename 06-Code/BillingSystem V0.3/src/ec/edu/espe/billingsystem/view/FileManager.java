@@ -16,6 +16,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author:  JavaSquad, DCCO-ESPE
+ */
+
 public class FileManager {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final BillingManager billingManager = new BillingManager();

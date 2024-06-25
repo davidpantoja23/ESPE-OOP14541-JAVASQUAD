@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 /**
  *
- * Author: David Pantoja, JavaSquad, DCCO-ESPE
+ * @author:  JavaSquad, DCCO-ESPE
  */
 public class BillingSystems {
 

@@ -5,7 +5,7 @@ import java.util.Objects;
 
 /**
  * Represents a product.
- * Author: David Pantoja, JavaSquad, DCCO-ESPE
+ * @author: JavaSquad, DCCO-ESPE
  */
 public class Product {
     private final int id;

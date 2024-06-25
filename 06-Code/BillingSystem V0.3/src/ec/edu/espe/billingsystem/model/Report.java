@@ -5,7 +5,7 @@ import java.util.Objects;
 
 /**
  * Represents a report.
- * Author: David Pantoja, JavaSquad, DCCO-ESPE
+ * @author: JavaSquad, DCCO-ESPE
  */
 public class Report {
     private int id;

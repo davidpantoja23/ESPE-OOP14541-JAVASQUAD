@@ -2,7 +2,7 @@
 package ec.edu.espe.billingsystem.utils;
 
 /**
- * Author: David Pantoja, JavaSquad, DCCO-ESPE
+ * @author: JavaSquad, DCCO-ESPE
  */
 public class IVACalculator {
     private static final double IVA_RATE = 0.15;
