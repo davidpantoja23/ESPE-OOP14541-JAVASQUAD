@@ -1,0 +1,35 @@
+{
+  "customer": {
+    "customerId": "1718370925",
+    "typeOfId": {
+      "id": 1,
+      "typeName": "Cédula",
+      "idNumber": "1718370925"
+    },
+    "name": "Alexandra Auquilla",
+    "email": "sdas@fsdf.com"
+  },
+  "lines": [
+    {
+      "product": {
+        "id": 1,
+        "name": "Hamburguesa 1/2",
+        "price": 5.99,
+        "stock": 123
+      },
+      "quantity": 123
+    }
+  ],
+  "paymentMethod": {
+    "id": 1,
+    "name": "Efectivo"
+  },
+  "typeOfId": {
+    "id": 1,
+    "typeName": "Cédula",
+    "idNumber": "1718370925"
+  },
+  "subtotal": 736.77,
+  "vat": 110.51549999999999,
+  "total": 847.2855
+}
