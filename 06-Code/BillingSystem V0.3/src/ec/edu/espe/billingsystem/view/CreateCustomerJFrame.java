@@ -4,6 +4,8 @@
  */
 package ec.edu.espe.billingsystem.view;
 
+import javax.swing.text.Document;
+
 /**
  *
  * @author David Morillo, JavaSquad, DCCO-ESPE
@@ -16,6 +18,21 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
     public CreateCustomerJFrame() {
         initComponents();
     }
+    
+    public boolean validarCedula(String cedula) {
+    if (cedula.length() != 10) {
+        return false;
+    }
+    int[] coeficientes = {2, 1, 2, 1, 2, 1, 2, 1, 2};
+    int suma = 0;
+    for (int i = 0; i < coeficientes.length; i++) {
+        int digito = Character.getNumericValue(cedula.charAt(i)) * coeficientes[i];
+        suma += digito > 9 ? digito - 9 : digito;
+    }
+    int ultimoDigitoCalculado = (10 - (suma % 10)) % 10;
+    int ultimoDigitoCedula = Character.getNumericValue(cedula.charAt(9));
+    return ultimoDigitoCalculado == ultimoDigitoCedula;
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,12 +48,12 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtCedula = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
+        txtCorreo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
@@ -54,9 +71,9 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
 
         jLabel4.setText("Numero de Identificación");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtCedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtCedulaActionPerformed(evt);
             }
         });
 
@@ -64,9 +81,9 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
 
         jLabel6.setText("Dirección:");
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txtDireccionActionPerformed(evt);
             }
         });
 
@@ -101,14 +118,14 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtCedula, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtCorreo, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField3))
+                                    .addComponent(txtDireccion))
                                 .addGap(0, 49, Short.MAX_VALUE)))))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -128,19 +145,19 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jButton1)
                 .addContainerGap(50, Short.MAX_VALUE))
@@ -160,17 +177,40 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtCedulaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        if (validarCedula(txtCedula.getText())) {
+        String cedula = txtCedula.getText();
+        String nombre = txtNombre.getText();
+        String direccion = txtDireccion.getText();
+        String correo = txtCorreo.getText();
+
+        try (MongoClient mongoClient = new MongoClient("localhost", 27017)) {
+            MongoDatabase database = mongoClient.getDatabase("clientesDB");
+            MongoCollection<Document> collection = database.getCollection("clientes");
+
+            Document doc = new Document("cedula", cedula)
+                    .append("nombre", nombre)
+                    .append("direccion", direccion)
+                    .append("correo", correo);
+            collection.insertOne(doc);
+
+            JOptionPane.showMessageDialog(this, "Cliente registrado exitosamente!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al conectar con MongoDB: " + e.getMessage());
+        }
+    } else {
+        JOptionPane.showMessageDialog(this, "Cédula inválida. Debe tener 10 dígitos y ser válida.");
+    }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txtDireccionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -217,9 +257,9 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
