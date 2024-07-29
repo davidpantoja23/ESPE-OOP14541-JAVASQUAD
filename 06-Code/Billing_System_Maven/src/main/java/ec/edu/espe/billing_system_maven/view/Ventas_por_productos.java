@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ec.edu.espe.billing_system_maven.view;
-
 /**
  *
  * @author Jenniffer Marquez, Javasquad, DCCO-ESPE
