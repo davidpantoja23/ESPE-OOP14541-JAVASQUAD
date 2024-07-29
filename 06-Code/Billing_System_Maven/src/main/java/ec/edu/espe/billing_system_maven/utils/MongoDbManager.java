@@ -11,16 +11,16 @@ import org.bson.Document;
 
 /**
  *
- * @author , DCCO-ESPE
+ * @author JavaSquad, DCCO-ESPE
  */
 public class MongoManager {
 
     public static boolean create(Animal animal) {
 
-        String uri = "el cluster tuyo animal";
+        String uri = "   ";
 
         MongoDatabase dataBase = openConnectionToMongo(uri);
-        Document dataOfAnimal = new Document().append("id", animal.getId()).append("descripción",animal.getDescription()).append("bornOnDate", animal.getBornOnDate()).append("gender", animal.getGender()).append("cage", animal.getCage()).append("numberOfBones",animal.getNumberOfBones()).append("vertebrate", animal.isVertebrate()).append("food", animal.getFoods());
+        Document dataOf  = 
 
         String collection = "Animal";
         MongoCollection<Document> mongoCollection = accessToCollections(dataBase, collection);
@@ -80,10 +80,3 @@ public class MongoManager {
     }
     
     
-    //Eliminar documentos
-    public static void deleteDocuments(String key, String data, MongoCollection<Document> mongoCollection){
-        //TODO: Combinar con método de obtención de datos
-        Document findDocument = new Document("male", true);
-        mongoCollection.findOneAndDelete(findDocument);
-    }
-}
