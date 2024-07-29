@@ -4,13 +4,16 @@
  */
 package ec.edu.espe.billing_system_maven.utils;
 
-import java.util.List;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
+import java.util.List;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import ec.edu.espe.billing_system_maven.model.Cajero;
+import ec.edu.espe.billing_system_maven.model.Cliente;
 import ec.edu.espe.billing_system_maven.model.Factura;
+import ec.edu.espe.billing_system_maven.model.Producto;
 import java.util.List;
 import org.bson.Document;
 
@@ -19,77 +22,77 @@ import org.bson.Document;
  * @author Jenniffer Marquez, Javasquad, DCCO-ESPE
  */
 public class Export {
-    public static boolean create(Factura factura) {
-
+    public static void guardarClienteEnMongoDB(Cliente cliente) {
         String uri = "mongodb+srv://Jenni:Jenni@cluster0.tjpvdfr.mongodb.net/";
-
-        MongoDatabase dataBase = openConnectionToMongo(uri);
-        Document dataOfUser = new Document().append("Numero de factura", factura.getNumeroFactura()).append("Cliente", factura.getCliente()) .append("Fecha", factura.getFecha());
-
-        String collection = "Productos";
-        MongoCollection<Document> mongoCollection = accessToCollections(dataBase, collection);
-        insertOneData(dataOfUser, mongoCollection);
-        return false;
-    }
-
-    //Abir conexión con mongoDB
-    public static MongoDatabase openConnectionToMongo(String uri) {
-        MongoClient mongoClient = MongoClients.create(uri);
-        MongoDatabase dataBase = mongoClient.getDatabase("oop");
-
-        return dataBase;
-    }
-
-    //Acceso a colecciones
-    public static MongoCollection<Document> accessToCollections(MongoDatabase dataBase, String collection) {
-        MongoCollection<Document> mongoCollection = dataBase.getCollection(collection);
-        return mongoCollection;
-    }
-
-    //Tipo de ingreso de datos
-    public static void insertOneData(Document data, MongoCollection<Document> mongoCollection) {
-        mongoCollection.insertOne(data);
-    }
-
-    public static void insertMoreThanOneData(List<Document> listOfData, MongoCollection<Document> mongoCollection) {
-        mongoCollection.insertMany(listOfData);
-    }
-
-    //Obtención de datos
-    public static void getAllCollection(MongoCollection<Document> mongoCollection) {
-        //Si solo busco en base a un solo dato 
-        Document findDocument = new Document("male", true);
-        //Si quiero todo el documento:
-        //Document findDocument = new Document();
-
-        MongoCursor<Document> resultDocument = mongoCollection.find(findDocument).iterator();
-        
-        System.out.println("*");
-        System.out.println("People male");
-        System.out.println("*");
-        while (resultDocument.hasNext()) {
-            System.out.println(resultDocument.next().getString("name"));
+        try (MongoClient mongoClient = MongoClients.create(uri)) {
+            MongoDatabase database = mongoClient.getDatabase("oop");
+            MongoCollection<Document> collection = database.getCollection("Cliente");
+            collection.insertOne(cliente.toDocument());
+            System.out.println("Cliente guardado en MongoDB");
+        } catch (Exception e) {
+            System.err.println("Error al guardar el cliente en MongoDB: " + e.getMessage());
         }
-        
-        //return resultDocument;
     }
     
-    //Actualización de documentos
-    public static void editDocuments(String key, String data,String newData, MongoCollection<Document> mongoCollection){
-        Document findDocument = new Document(key,data);
-        
-        Document updateDocument = new Document("$set",new Document(key,newData));
-        
-        mongoCollection.findOneAndUpdate(findDocument, updateDocument);
+    public static void guardarFacturaEnMongoDB(Factura factura) {
+        String uri = "mongodb+srv://Jenni:Jenni@cluster0.tjpvdfr.mongodb.net/";
+        try (MongoClient mongoClient = MongoClients.create(uri)) {
+            MongoDatabase database = mongoClient.getDatabase("oop");
+            MongoCollection<Document> collection = database.getCollection("Factura");
+            collection.insertOne(factura.toDocument());
+            System.out.println("Factura guardada en MongoDB");
+        } catch (Exception e) {
+            System.err.println("Error al guardar la factura en MongoDB: " + e.getMessage());
+        }
     }
     
+     public static void guardarProductoEnMongoDB(Producto producto) {
+        String uri = "mongodb+srv://Jenni:Jenni@cluster0.tjpvdfr.mongodb.net/";
+        try (MongoClient mongoClient = MongoClients.create(uri)) {
+            MongoDatabase database = mongoClient.getDatabase("oop");
+            MongoCollection<Document> collection = database.getCollection("Producto");
+            collection.insertOne(producto.toDocument());
+            System.out.println("Producto guardado en MongoDB");
+        } catch (Exception e) {
+            System.err.println("Error al guardar el producto en MongoDB: " + e.getMessage());
+        }
+    }
+     
+    private static final String CONNECTION_STRING = "mongodb+srv://Jenni:Jenni@cluster0.tjpvdfr.mongodb.net/";
+    private static final String DATABASE_NAME = "oop";
+    private static final String COLLECTION_NAME = "Cajero";
     
-    //Eliminar documentos
-    public static void deleteDocuments(String key, String data, MongoCollection<Document> mongoCollection){
-        //TODO: Combinar con método de obtención de datos
-        Document findDocument = new Document("male", true);
-        mongoCollection.findOneAndDelete(findDocument);
+    public static void saveCajero(Cajero cajero) {
+        try (MongoClient mongoClient = MongoClients.create(CONNECTION_STRING)) {
+            MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
+            MongoCollection<Document> collection = database.getCollection(COLLECTION_NAME);
+            Document document = new Document("id", cajero.getId())
+                                    .append("nombre", cajero.getNombre())
+                                    .append("email", cajero.getEmail())
+                                    .append("contraseña", cajero.getContraseña());
+            collection.insertOne(document);
+            System.out.println("Cajero guardado en MongoDB");
+        } catch (Exception e) {
+            System.err.println("Error al guardar el cajero en MongoDB: " + e.getMessage());
+        }
+    }
 
+    // Método para validar el login
+    public static boolean validateLogin(String email, String contraseña) {
+        try (MongoClient mongoClient = MongoClients.create(CONNECTION_STRING)) {
+            MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
+            MongoCollection<Document> collection = database.getCollection(COLLECTION_NAME);
+            Document query = new Document("email", email)
+                                .append("contraseña", contraseña);
+            Document result = collection.find(query).first();
+            return result != null;
+        } catch (Exception e) {
+            System.err.println("Error al validar el login en MongoDB: " + e.getMessage());
+            return false;
+        }
     }
 
-}
+    
+    }
+
+    

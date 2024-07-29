@@ -4,6 +4,8 @@
  */
 package ec.edu.espe.billing_system_maven.model;
 
+import org.bson.Document;
+
 /**
  *
  * @author Jenniffer Marquez, Javasquad, DCCO-ESPE
@@ -61,4 +63,9 @@ public class Factura {
         this.fecha = fecha;
     }
     
+    public Document toDocument() {
+        return new Document("numeroFactura", this.numeroFactura)
+                .append("cliente", this.cliente)
+                .append("fecha", this.fecha);
+    }
 }

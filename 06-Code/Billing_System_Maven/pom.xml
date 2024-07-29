@@ -17,6 +17,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>22</maven.compiler.source>
         <maven.compiler.target>22</maven.compiler.target>
-        <exec.mainClass>ec.edu.espe.billing_system_maven.Billing_System_Maven</exec.mainClass>
+        <exec.mainClass>ec.edu.espe.billing_system_maven.view.Splash</exec.mainClass>
     </properties>
 </project>
