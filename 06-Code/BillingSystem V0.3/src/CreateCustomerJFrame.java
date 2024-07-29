@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package ec.edu.espe.billingsystem.view;
+
 
 import javax.swing.text.Document;
 
@@ -52,7 +52,6 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtDireccion = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -60,7 +59,7 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel2.setBackground(java.awt.Color.lightGray);
 
         jLabel1.setText("Crear Cliente");
 
@@ -81,15 +80,8 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
 
         jLabel6.setText("Dirección:");
 
-        txtDireccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDireccionActionPerformed(evt);
-            }
-        });
-
         jLabel7.setText("Correo Electrónico: ");
 
-        jButton1.setBackground(new java.awt.Color(51, 255, 0));
         jButton1.setText("Crear Cliente");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,8 +116,7 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
                                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtCorreo, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDireccion))
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(0, 49, Short.MAX_VALUE)))))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -152,9 +143,7 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,7 +174,7 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
         if (validarCedula(txtCedula.getText())) {
         String cedula = txtCedula.getText();
         String nombre = txtNombre.getText();
-        String direccion = txtDireccion.getText();
+       
         String correo = txtCorreo.getText();
 
         try (MongoClient mongoClient = new MongoClient("localhost", 27017)) {
@@ -198,19 +187,15 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
                     .append("correo", correo);
             collection.insertOne(doc);
 
-            JOptionPane.showMessageDialog(this, "Cliente registrado exitosamente!");
+            OptionPane.showMessageDialog(this, "Cliente registrado exitosamente!");
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error al conectar con MongoDB: " + e.getMessage());
         }
-    } else {
+   } else {
         JOptionPane.showMessageDialog(this, "Cédula inválida. Debe tener 10 dígitos y ser válida.");
     }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDireccionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,11 +225,7 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CreateCustomerJFrame().setVisible(true);
-            }
-        });
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -259,7 +240,6 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtCorreo;
-    private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

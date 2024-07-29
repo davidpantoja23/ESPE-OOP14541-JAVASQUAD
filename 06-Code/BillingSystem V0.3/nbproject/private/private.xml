@@ -2,17 +2,8 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-            <file>file:/C:/POO-JavaSquad/ESPE-OOP14541-JAVASQUAD/06-Code/BillingSystem%20V0.3/src/ec/edu/espe/billingsystem/model/Customer.java</file>
-            <file>file:/C:/POO-JavaSquad/ESPE-OOP14541-JAVASQUAD/06-Code/BillingSystem%20V0.3/src/ec/edu/espe/billingsystem/view/FileManager.java</file>
-            <file>file:/C:/POO-JavaSquad/ESPE-OOP14541-JAVASQUAD/06-Code/BillingSystem%20V0.3/src/ec/edu/espe/billingsystem/controller/InventoryManager.java</file>
-            <file>file:/C:/POO-JavaSquad/ESPE-OOP14541-JAVASQUAD/06-Code/BillingSystem%20V0.3/src/ec/edu/espe/billingsystem/view/CreateCustomerJFrame.java</file>
-            <file>file:/C:/POO-JavaSquad/ESPE-OOP14541-JAVASQUAD/06-Code/BillingSystem%20V0.3/src/ec/edu/espe/billingsystem/controller/BillingManager.java</file>
-            <file>file:/C:/POO-JavaSquad/ESPE-OOP14541-JAVASQUAD/06-Code/BillingSystem%20V0.3/src/ec/edu/espe/billingsystem/view/BillingSystems.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/Project%20OOP/ESPE-OOP014541-JAVASQUAD/06-Code/BillingSystem%20V0.3/src/CreateCustomerJFrame.java</file>
         </group>
->>>>>>> a75932181315dfc10156268f4affed9b44dd05e7
     </open-files>
 </project-private>
