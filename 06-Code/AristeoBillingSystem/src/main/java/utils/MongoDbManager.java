@@ -4,12 +4,11 @@
  */
 package utils;
 
-import com.mongodb.ConnectionString;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
-import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 import ec.edu.espe.aristeobillingsystem.model.Customer;
 import ec.edu.espe.aristeobillingsystem.model.Product;
 import org.bson.Document;
@@ -28,9 +27,9 @@ public class MongoDbManager {
         MongoClientURI uri = new MongoClientURI("mongodb+srv://damorillo3:damorillo3@cluster0.f4bek4r.mongodb.net/?retryWrites=true&w=majority");
         mongoClient = new MongoClient(uri);
         dataBase = mongoClient.getDatabase("Aristeo");
+        collection = dataBase.getCollection("Admin");
         collection = dataBase.getCollection("Products");
         collection = dataBase.getCollection("Customers");
-        
     } 
     
     public static void addProduct(Product product) {
@@ -43,4 +42,8 @@ public class MongoDbManager {
         collection.insertOne(document);
     }
     
+//    public boolean validateLogin(String username, String password) {
+//        Document user = collection.find(Filters.and(Filters.eq("username", username), Filters.eq("password", password))).first();
+//        return user != null;
+//    }
 }

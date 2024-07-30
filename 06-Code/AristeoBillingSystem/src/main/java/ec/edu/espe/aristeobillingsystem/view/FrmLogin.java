@@ -6,12 +6,16 @@ package ec.edu.espe.aristeobillingsystem.view;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import utils.MongoDbManager;
 
 /**
  *
  * @author David Morillo, JavaSquad, DCCO-ESPE
  */
 public class FrmLogin extends javax.swing.JFrame {
+
+    private MongoDbManager mongoDbManager;
 
     /**
      * Creates new form FrmLogin
@@ -33,11 +37,11 @@ public class FrmLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtUser = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
-        btnCustomer = new javax.swing.JButton();
+        btnCasher = new javax.swing.JButton();
         lblIcon = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,16 +71,18 @@ public class FrmLogin extends javax.swing.JFrame {
             }
         });
 
-        btnCustomer.setBackground(new java.awt.Color(204, 255, 255));
-        btnCustomer.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        btnCustomer.setText("Cliente");
-        btnCustomer.addActionListener(new java.awt.event.ActionListener() {
+        btnCasher.setBackground(new java.awt.Color(204, 255, 255));
+        btnCasher.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        btnCasher.setText("Cajero");
+        btnCasher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCustomerActionPerformed(evt);
+                btnCasherActionPerformed(evt);
             }
         });
 
         lblIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/LogoAristeo.jpg"))); // NOI18N
+
+        txtPassword.setText("jPasswordField1");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,7 +93,7 @@ public class FrmLogin extends javax.swing.JFrame {
                 .addComponent(btnLogin)
                 .addGap(167, 167, 167))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+                .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblIcon)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
@@ -96,8 +102,8 @@ public class FrmLogin extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(35, 35, 35)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPassword)
-                            .addComponent(txtUser))))
+                            .addComponent(txtUser)
+                            .addComponent(txtPassword))))
                 .addGap(47, 47, 47))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(209, 209, 209)
@@ -105,7 +111,7 @@ public class FrmLogin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCustomer)
+                .addComponent(btnCasher)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -125,7 +131,7 @@ public class FrmLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnExit)
                 .addGap(4, 4, 4)
-                .addComponent(btnCustomer)
+                .addComponent(btnCasher)
                 .addContainerGap())
         );
 
@@ -143,17 +149,28 @@ public class FrmLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCustomerActionPerformed
+    private void btnCasherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCasherActionPerformed
+        this.dispose();
+        FrmCustomerSell customerSell = new FrmCustomerSell();
+        customerSell.setVisible(true);
+    }//GEN-LAST:event_btnCasherActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        Icon icon = new ImageIcon(new ImageIcon (getClass().getResource("/icons/LogoAristeo.jpg")).getImage()
-        .getScaledInstance(lblIcon.getWidth(), lblIcon.getHeight(), 0));
+        Icon icon = new ImageIcon(new ImageIcon(getClass().getResource("/icons/LogoAristeo.jpg")).getImage()
+                .getScaledInstance(lblIcon.getWidth(), lblIcon.getHeight(), 0));
         lblIcon.setIcon(icon);
         this.dispose();
-        FrmMenu menu = new FrmMenu();
-        menu.setVisible(true);
+            FrmMenu menu = new FrmMenu();
+            menu.setVisible(true);
+//        String username = txtUser.getText();
+//        String password = txtPassword.getText();
+//
+//        // Validar las credenciales
+//        if (mongoDbManager.validateLogin(username, password)) {
+//            
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Credenciales inválidas. Intente de nuevo.", "Error de Login", JOptionPane.ERROR_MESSAGE);
+//        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
@@ -192,14 +209,14 @@ public class FrmLogin extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCustomer;
+    private javax.swing.JButton btnCasher;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblIcon;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }

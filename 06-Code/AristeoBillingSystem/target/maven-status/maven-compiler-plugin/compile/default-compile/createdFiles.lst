@@ -2,6 +2,7 @@ ec\edu\espe\aristeobillingsystem\model\User.class
 utils\MongoDbManager.class
 ec\edu\espe\aristeobillingsystem\model\Customer.class
 ec\edu\espe\aristeobillingsystem\view\FrmMenu.class
+ec\edu\espe\aristeobillingsystem\view\FrmCustomerSell.class
 ec\edu\espe\aristeobillingsystem\controller\ControllerReport.class
 ec\edu\espe\aristeobillingsystem\view\FrmAddProducts$2.class
 ec\edu\espe\aristeobillingsystem\model\Product.class
@@ -21,6 +22,7 @@ ec\edu\espe\aristeobillingsystem\model\Inventory.class
 ec\edu\espe\aristeobillingsystem\view\FrmLogin$4.class
 ec\edu\espe\aristeobillingsystem\view\FrmSplash$3.class
 ec\edu\espe\aristeobillingsystem\view\FrmSplash.class
+ec\edu\espe\aristeobillingsystem\view\FrmCustomerSell$1.class
 ec\edu\espe\aristeobillingsystem\model\Invoice.class
 ec\edu\espe\aristeobillingsystem\view\FrmAddProducts$3.class
 ec\edu\espe\aristeobillingsystem\view\FrmLogin$2.class
