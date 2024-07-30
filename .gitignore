@@ -24,5 +24,9 @@ hs_err_pid*
 replay_pid*
 /06-Code/MavenVersion/MavenBillingSystem/nbproject/private/
 /06-Code/MavenVersion/MavenBillingSystem/build/
+<<<<<<< HEAD
 /06-Code/BillingSystem V0.3/dist/
 /06-Code/Maven__BillingSystem/Maven__BillingSystem/target/
+=======
+/06-Code/Billing_System_Maven/target/
+>>>>>>> 669d5503c32ffbeed62fefcdbb975f557b231366
