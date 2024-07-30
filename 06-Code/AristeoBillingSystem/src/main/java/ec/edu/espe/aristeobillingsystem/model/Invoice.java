@@ -18,17 +18,15 @@ public class Invoice {
     private Customer customer;
     private ArrayList<InvoiceLine> lines;
     private PaymentMethod paymentMethod;
-    private TypeOfId typeOfId;
     private double subTotal;
     private double vat;
     private double total;
 
-    public Invoice(Customer customer, ArrayList<InvoiceLine> lines, PaymentMethod paymentMethod, TypeOfId typeOfId, double subTotal, double vat, double total) {
+    public Invoice(Customer customer, ArrayList<InvoiceLine> lines, PaymentMethod paymentMethod, double subTotal, double vat, double total) {
         validateInvoiceDetails(customer, paymentMethod);
         this.customer = customer;
         this.lines = lines;
         this.paymentMethod = paymentMethod;
-        this.typeOfId = typeOfId;
         this.subTotal = subTotal;
         this.vat = vat;
         this.total = total;
@@ -90,20 +88,6 @@ public class Invoice {
      */
     public void setPaymentMethod(PaymentMethod paymentMethod) {
         this.paymentMethod = paymentMethod;
-    }
-
-    /**
-     * @return the typeOfId
-     */
-    public TypeOfId getTypeOfId() {
-        return typeOfId;
-    }
-
-    /**
-     * @param typeOfId the typeOfId to set
-     */
-    public void setTypeOfId(TypeOfId typeOfId) {
-        this.typeOfId = typeOfId;
     }
 
     /**

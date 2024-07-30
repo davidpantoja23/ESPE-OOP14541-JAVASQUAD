@@ -28,11 +28,11 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        mnuBack = new javax.swing.JMenu();
+        mniBack = new javax.swing.JMenuItem();
+        jMenu10 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
-        jMenu8 = new javax.swing.JMenu();
-        jMenu9 = new javax.swing.JMenu();
+        mniAddProduct = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
@@ -47,29 +47,47 @@ public class FrmMenu extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 521, Short.MAX_VALUE)
+            .addGap(0, 639, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 377, Short.MAX_VALUE)
+            .addGap(0, 407, Short.MAX_VALUE)
         );
 
         jMenuBar1.setBackground(new java.awt.Color(204, 255, 204));
 
-        jMenu1.setBackground(new java.awt.Color(204, 255, 204));
-        jMenu1.setText("Regresar");
-        jMenuBar1.add(jMenu1);
+        mnuBack.setBackground(new java.awt.Color(204, 255, 204));
+        mnuBack.setText("Regresar");
+        mnuBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuBackActionPerformed(evt);
+            }
+        });
+
+        mniBack.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        mniBack.setText("Volver ");
+        mniBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniBackActionPerformed(evt);
+            }
+        });
+        mnuBack.add(mniBack);
+
+        jMenuBar1.add(mnuBack);
+
+        jMenu10.setText("Gestión de Clientes");
+        jMenuBar1.add(jMenu10);
 
         jMenu2.setText("Gestión de Productos");
 
-        jMenu7.setText("Añadir Producto");
-        jMenu2.add(jMenu7);
-
-        jMenu8.setText("Editar Producto");
-        jMenu2.add(jMenu8);
-
-        jMenu9.setText("Eliminar Producto");
-        jMenu2.add(jMenu9);
+        mniAddProduct.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mniAddProduct.setText("Añadir Producto");
+        mniAddProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAddProductActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mniAddProduct);
 
         jMenuBar1.add(jMenu2);
 
@@ -100,6 +118,22 @@ public class FrmMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mniAddProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAddProductActionPerformed
+        this.dispose();
+        FrmAddProducts addProduct = new FrmAddProducts();
+        addProduct.setVisible(true);
+    }//GEN-LAST:event_mniAddProductActionPerformed
+
+    private void mnuBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuBackActionPerformed
+        
+    }//GEN-LAST:event_mnuBackActionPerformed
+
+    private void mniBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniBackActionPerformed
+        this.dispose();
+        FrmLogin login = new FrmLogin();
+        login.setVisible(true);
+    }//GEN-LAST:event_mniBackActionPerformed
 public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -132,16 +166,16 @@ public static void main(String args[]) {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem mniAddProduct;
+    private javax.swing.JMenuItem mniBack;
+    private javax.swing.JMenu mnuBack;
     // End of variables declaration//GEN-END:variables
 }

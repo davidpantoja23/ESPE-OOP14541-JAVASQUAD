@@ -4,6 +4,8 @@
  */
 package ec.edu.espe.aristeobillingsystem.view;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.SwingWorker;
 
 /**
@@ -30,7 +32,7 @@ public class FrmSplash extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lblIcon = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
@@ -40,6 +42,8 @@ public class FrmSplash extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 204));
         jPanel2.setPreferredSize(new java.awt.Dimension(500, 400));
+
+        lblIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/LogoAristeo.jpg"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setText("(c)2024 JavaSquad");
@@ -72,7 +76,7 @@ public class FrmSplash extends javax.swing.JFrame {
                         .addGap(49, 49, 49)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
+                            .addComponent(lblIcon)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(207, 207, 207)
                         .addComponent(btnExit)))
@@ -81,8 +85,8 @@ public class FrmSplash extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
+                .addComponent(lblIcon)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnExit)
@@ -108,7 +112,10 @@ public class FrmSplash extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        this.dispose();
+        Icon icon = new ImageIcon(new ImageIcon (getClass().getResource("/icons/LogoAristeo.jpg")).getImage()
+        .getScaledInstance(lblIcon.getWidth(), lblIcon.getHeight(), 0));
+        lblIcon.setIcon(icon);
+        this.setVisible(false);
     }//GEN-LAST:event_btnExitActionPerformed
 
     /**
@@ -120,7 +127,7 @@ public class FrmSplash extends javax.swing.JFrame {
             protected Void doInBackground() throws Exception {
                 int progress = 0;
                 while (progress < 100) {
-                    Thread.sleep(50);
+                    Thread.sleep(25);
                     progress++;
                     jProgressBar1.setValue(progress);
                 }
@@ -172,9 +179,9 @@ public class FrmSplash extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JLabel lblIcon;
     // End of variables declaration//GEN-END:variables
 }

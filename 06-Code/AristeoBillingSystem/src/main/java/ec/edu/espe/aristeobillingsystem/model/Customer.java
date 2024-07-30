@@ -1,49 +1,37 @@
 package ec.edu.espe.aristeobillingsystem.model;
 
+import java.util.UUID;
+
 /**
  *
  * @author David Morillo, JavaSquad, DCCO-ESPE
  */
 public class Customer {
 
-    private String customerId;
-    private TypeOfId typeOfId;
+    private String dni;
     private String name;
-    private String email;
+    private String email; 
+    private String phone;
 
-    public Customer(String customerId, TypeOfId typeOfId, String name, String email) {
-        this.customerId = customerId;
-        this.typeOfId = typeOfId;
+    public Customer(String dni, String name, String email, String phone) {
+        this.dni = dni;
         this.name = name;
         this.email = email;
+        this.phone = phone;
     }
 
     /**
-     * @return the customerId
+     * @return the dni
      */
-    public String getCustomerId() {
-        return customerId;
+    public String getDni() {
+        return dni;
     }
 
     /**
-     * @param customerId the customerId to set
+     * @param dni the dni to set
      */
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
-    }
-
-    /**
-     * @return the typeOfId
-     */
-    public TypeOfId getTypeOfId() {
-        return typeOfId;
-    }
-
-    /**
-     * @param typeOfId the typeOfId to set
-     */
-    public void setTypeOfId(TypeOfId typeOfId) {
-        this.typeOfId = typeOfId;
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     /**
@@ -73,4 +61,19 @@ public class Customer {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    /**
+     * @return the phone
+     */
+    public String getPhone() {
+        return phone;
+    }
+
+    /**
+     * @param phone the phone to set
+     */
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
 }

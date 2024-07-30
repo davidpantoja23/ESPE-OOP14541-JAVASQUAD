@@ -28,8 +28,9 @@ public class MongoDbManager {
         MongoClientURI uri = new MongoClientURI("mongodb+srv://damorillo3:damorillo3@cluster0.f4bek4r.mongodb.net/?retryWrites=true&w=majority");
         mongoClient = new MongoClient(uri);
         dataBase = mongoClient.getDatabase("Aristeo");
-        collection = dataBase.getCollection("Admin");
         collection = dataBase.getCollection("Products");
+        collection = dataBase.getCollection("Customers");
+        
     } 
     
     public static void addProduct(Product product) {
@@ -37,5 +38,9 @@ public class MongoDbManager {
         collection.insertOne(document);
     }
     
+    public static void createCustomer(Customer customer){
+        Document document = new Document("dni", customer.getDni()).append("name", customer.getName()).append("email", customer.getEmail()).append("phone", customer.getPhone());
+        collection.insertOne(document);
+    }
     
 }

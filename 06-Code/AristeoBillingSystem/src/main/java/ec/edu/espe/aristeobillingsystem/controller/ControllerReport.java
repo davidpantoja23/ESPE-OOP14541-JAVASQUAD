@@ -36,34 +36,8 @@ public class ControllerReport {
     }
 
     public ArrayList<Invoice> filterInvoicesById(ArrayList<Invoice> invoices, String idNumber) {
-        return (ArrayList<Invoice>) invoices.stream()
-                .filter(invoice -> invoice.getCustomer().getTypeOfId().getIdNumber().equals(idNumber))
-                .collect(Collectors.toList());
-    }
-
-    public void displayInvoices(ArrayList<Invoice> invoices) {
-        for (Invoice invoice : invoices) {
-            displayInvoiceDetails(invoice);
-            System.out.println("------------------------------------------");
-        }
-    }
-
-    private void displayInvoiceDetails(Invoice invoice) {
-        System.out.println("------------------------------------------");
-        System.out.println("| Factura                                  |");
-        System.out.println("------------------------------------------");
-        System.out.printf("| Tipo de ID: %-29s |%n", invoice.getCustomer().getTypeOfId().getTypeName() + " (" + invoice.getCustomer().getTypeOfId().getIdNumber() + ")");
-        System.out.printf("| Cliente: %-29s |%n", invoice.getCustomer().getName());
-        System.out.printf("| Método de pago: %-23s |%n", invoice.getPaymentMethod().getName());
-        System.out.println("------------------------------------------");
-        System.out.println("| Productos:                               |");
-        for (InvoiceLine line : invoice.getLine()) {
-            System.out.printf("| %-25s %3d x $%-6.2f |%n", line.getProduct().getName(), line.getQuantity(), line.getProduct().getPrice());
-        }
-        System.out.println("------------------------------------------");
-        System.out.printf("| Subtotal: $%-28.2f |%n", invoice.getSubTotal());
-        System.out.printf("| IVA: $%-33.2f |%n", invoice.getVat());
-        System.out.printf("| Total: $%-31.2f |%n", invoice.getTotal());
-        System.out.println("------------------------------------------");
+        return invoices.stream()
+                .filter(invoice -> invoice.getCustomer().getDni().equals(idNumber))
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 }
