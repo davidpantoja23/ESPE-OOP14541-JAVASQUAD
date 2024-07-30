@@ -4,6 +4,7 @@
  */
 package ec.edu.espe.billingsystem.view;
 
+import javax.swing.JOptionPane;
 import javax.swing.text.Document;
 
 /**
@@ -52,10 +53,10 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtDireccion = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        txtDireccion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 255));
@@ -81,12 +82,6 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
 
         jLabel6.setText("Dirección:");
 
-        txtDireccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDireccionActionPerformed(evt);
-            }
-        });
-
         jLabel7.setText("Correo Electrónico: ");
 
         jButton1.setBackground(new java.awt.Color(51, 255, 0));
@@ -104,15 +99,6 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(118, 118, 118)
-                                .addComponent(jLabel1))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -124,14 +110,24 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
                                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtCorreo, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDireccion))
-                                .addGap(0, 49, Short.MAX_VALUE)))))
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(0, 49, Short.MAX_VALUE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(118, 118, 118)
+                                .addComponent(jLabel1))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(101, 101, 101)
+                                .addComponent(jButton1))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,29 +184,25 @@ public class CreateCustomerJFrame extends javax.swing.JFrame {
         String direccion = txtDireccion.getText();
         String correo = txtCorreo.getText();
 
-        try (MongoClient mongoClient = new MongoClient("localhost", 27017)) {
-            MongoDatabase database = mongoClient.getDatabase("clientesDB");
-            MongoCollection<Document> collection = database.getCollection("clientes");
-
-            Document doc = new Document("cedula", cedula)
-                    .append("nombre", nombre)
-                    .append("direccion", direccion)
-                    .append("correo", correo);
-            collection.insertOne(doc);
-
-            JOptionPane.showMessageDialog(this, "Cliente registrado exitosamente!");
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error al conectar con MongoDB: " + e.getMessage());
-        }
+//        try (MongoClient mongoClient = new MongoClient("localhost", 27017)) {
+//            MongoDatabase database = mongoClient.getDatabase("clientesDB");
+//            MongoCollection<Document> collection = database.getCollection("clientes");
+//
+//            Document doc = new Document("cedula", cedula)
+//                    .append("nombre", nombre)
+//                    .append("direccion", direccion)
+//                    .append("correo", correo);
+//            collection.insertOne(doc);
+//
+//            JOptionPane.showMessageDialog(this, "Cliente registrado exitosamente!");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            JOptionPane.showMessageDialog(this, "Error al conectar con MongoDB: " + e.getMessage());
+//        }
     } else {
         JOptionPane.showMessageDialog(this, "Cédula inválida. Debe tener 10 dígitos y ser válida.");
     }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDireccionActionPerformed
 
     /**
      * @param args the command line arguments
