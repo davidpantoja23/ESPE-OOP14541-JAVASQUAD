@@ -87,9 +87,19 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu10.setText("Gestión de Clientes");
 
         jMenuItem2.setText("Añadir cliente");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu10.add(jMenuItem2);
 
         jMenuItem3.setText("Eliminar cliente");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu10.add(jMenuItem3);
 
         jMenuBar1.add(jMenu10);
@@ -106,6 +116,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu2.add(mniAddProduct);
 
         jMenuItem1.setText("Eliminar Porducto");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem1);
 
         jMenuBar1.add(jMenu2);
@@ -173,6 +188,24 @@ public class FrmMenu extends javax.swing.JFrame {
         FrmLogin login = new FrmLogin();
         login.setVisible(true);
     }//GEN-LAST:event_mniBackActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        this.dispose();
+        FrmRemoveProduct removeProduct = new FrmRemoveProduct();
+        removeProduct.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        this.dispose();
+        FrmCreateCustomer createCustomer = new FrmCreateCustomer();
+        createCustomer.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        this.dispose();
+        FrmRemoveCustomer removeCustomer = new FrmRemoveCustomer();
+        removeCustomer.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

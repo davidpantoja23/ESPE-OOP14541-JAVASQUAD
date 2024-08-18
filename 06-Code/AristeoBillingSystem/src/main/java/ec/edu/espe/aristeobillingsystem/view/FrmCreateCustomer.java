@@ -13,12 +13,12 @@ import utils.MongoDbManager;
  *
  * @author David Morillo, JavaSquad, DCCO-ESPE
  */
-public class FmrCreateCustomer extends javax.swing.JFrame {
+public class FrmCreateCustomer extends javax.swing.JFrame {
 
     /**
      * Creates new form FmrCustomer
      */
-    public FmrCreateCustomer() {
+    public FrmCreateCustomer() {
         initComponents();
     }
 
@@ -75,6 +75,11 @@ public class FmrCreateCustomer extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(204, 255, 255));
         jButton2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jButton2.setText("Regresar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -162,11 +167,17 @@ public class FmrCreateCustomer extends javax.swing.JFrame {
         
         customer = new Customer(dni, name, email, phone);
         MongoDbManager.createCustomer(customer);
-        if (JOptionPane.showConfirmDialog(this, "Are you sure you want to save the product --> " + customer) == 0) {
-            System.out.println("Product saved: " + customer);
+        if (JOptionPane.showConfirmDialog(this, "Estás seguro de que deseas guardar el cliente --> " + customer) == 0) {
+            System.out.println("Cliente guardado: " + customer);
             ControllerCustomer.createCustomer(customer);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+        FrmMenu menu = new FrmMenu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,21 +196,23 @@ public class FmrCreateCustomer extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FmrCreateCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCreateCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FmrCreateCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCreateCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FmrCreateCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCreateCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FmrCreateCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCreateCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FmrCreateCustomer().setVisible(true);
+                new FrmCreateCustomer().setVisible(true);
             }
         });
     }

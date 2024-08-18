@@ -150,7 +150,7 @@ public class FrmLogin extends javax.swing.JFrame {
 
     private void btnCasherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCasherActionPerformed
         this.dispose();
-        FrmCustomerSell customerSell = new FrmCustomerSell();
+        FrmRemoveCustomer customerSell = new FrmRemoveCustomer();
         customerSell.setVisible(true);
     }//GEN-LAST:event_btnCasherActionPerformed
 

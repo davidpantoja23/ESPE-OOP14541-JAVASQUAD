@@ -172,8 +172,8 @@ public class FrmAddProducts extends javax.swing.JFrame {
         product = new Product(id, name, price, stock);
         MongoDbManager.addProduct(product);
         
-        if (JOptionPane.showConfirmDialog(this, "Are you sure you want to save the product --> " + product) == 0) {
-            System.out.println("Product saved: " + product);
+        if (JOptionPane.showConfirmDialog(this, "Está seguro de que desea guardar el producto --> " + product) == 0) {
+            System.out.println("Producto guardado: " + product);
             ControllerProduct.addProduct(product);
         }
     }//GEN-LAST:event_btnAddActionPerformed

@@ -1,7 +1,9 @@
 C:\Users\User\ESPE-OOP-JAVASQUAD\ESPE-OOP14541-JAVASQUAD\06-Code\AristeoBillingSystem\src\main\java\ec\edu\espe\aristeobillingsystem\view\FrmAddProducts.java
+C:\Users\User\ESPE-OOP-JAVASQUAD\ESPE-OOP14541-JAVASQUAD\06-Code\AristeoBillingSystem\src\main\java\ec\edu\espe\aristeobillingsystem\view\FrmRemoveProduct.java
 C:\Users\User\ESPE-OOP-JAVASQUAD\ESPE-OOP14541-JAVASQUAD\06-Code\AristeoBillingSystem\src\main\java\ec\edu\espe\aristeobillingsystem\controller\ControllerCustomer.java
 C:\Users\User\ESPE-OOP-JAVASQUAD\ESPE-OOP14541-JAVASQUAD\06-Code\AristeoBillingSystem\src\main\java\ec\edu\espe\aristeobillingsystem\model\User.java
 C:\Users\User\ESPE-OOP-JAVASQUAD\ESPE-OOP14541-JAVASQUAD\06-Code\AristeoBillingSystem\src\main\java\utils\MongoDbManager.java
+C:\Users\User\ESPE-OOP-JAVASQUAD\ESPE-OOP14541-JAVASQUAD\06-Code\AristeoBillingSystem\src\main\java\ec\edu\espe\aristeobillingsystem\view\FrmRemoveCustomer.java
 C:\Users\User\ESPE-OOP-JAVASQUAD\ESPE-OOP14541-JAVASQUAD\06-Code\AristeoBillingSystem\src\main\java\ec\edu\espe\aristeobillingsystem\model\Inventory.java
 C:\Users\User\ESPE-OOP-JAVASQUAD\ESPE-OOP14541-JAVASQUAD\06-Code\AristeoBillingSystem\src\main\java\ec\edu\espe\aristeobillingsystem\view\FrmSplash.java
 C:\Users\User\ESPE-OOP-JAVASQUAD\ESPE-OOP14541-JAVASQUAD\06-Code\AristeoBillingSystem\src\main\java\ec\edu\espe\aristeobillingsystem\view\FrmMenu.java
@@ -14,4 +16,4 @@ C:\Users\User\ESPE-OOP-JAVASQUAD\ESPE-OOP14541-JAVASQUAD\06-Code\AristeoBillingS
 C:\Users\User\ESPE-OOP-JAVASQUAD\ESPE-OOP14541-JAVASQUAD\06-Code\AristeoBillingSystem\src\main\java\ec\edu\espe\aristeobillingsystem\model\Product.java
 C:\Users\User\ESPE-OOP-JAVASQUAD\ESPE-OOP14541-JAVASQUAD\06-Code\AristeoBillingSystem\src\main\java\ec\edu\espe\aristeobillingsystem\view\FrmLogin.java
 C:\Users\User\ESPE-OOP-JAVASQUAD\ESPE-OOP14541-JAVASQUAD\06-Code\AristeoBillingSystem\src\main\java\ec\edu\espe\aristeobillingsystem\controller\ControllerProduct.java
-C:\Users\User\ESPE-OOP-JAVASQUAD\ESPE-OOP14541-JAVASQUAD\06-Code\AristeoBillingSystem\src\main\java\ec\edu\espe\aristeobillingsystem\view\FmrCreateCustomer.java
+C:\Users\User\ESPE-OOP-JAVASQUAD\ESPE-OOP14541-JAVASQUAD\06-Code\AristeoBillingSystem\src\main\java\ec\edu\espe\aristeobillingsystem\view\FrmCreateCustomer.java

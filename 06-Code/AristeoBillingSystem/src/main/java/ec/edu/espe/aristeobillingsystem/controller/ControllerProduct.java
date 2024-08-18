@@ -22,6 +22,9 @@ public class ControllerProduct {
     }
 
     public void removeProduct(int productId) {
+        if (productId < 0) {
+            throw new IllegalArgumentException("El ID del producto no puede ser negativo.");
+        }
         inventory.removeProduct(productId);
     }
 }
