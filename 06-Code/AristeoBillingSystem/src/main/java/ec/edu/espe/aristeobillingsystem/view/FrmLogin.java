@@ -4,6 +4,7 @@
  */
 package ec.edu.espe.aristeobillingsystem.view;
 
+import ec.edu.espe.aristeobillingsystem.model.User;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -82,8 +83,6 @@ public class FrmLogin extends javax.swing.JFrame {
 
         lblIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/LogoAristeo.jpg"))); // NOI18N
 
-        txtPassword.setText("jPasswordField1");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -156,21 +155,19 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCasherActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        Icon icon = new ImageIcon(new ImageIcon(getClass().getResource("/icons/LogoAristeo.jpg")).getImage()
-                .getScaledInstance(lblIcon.getWidth(), lblIcon.getHeight(), 0));
-        lblIcon.setIcon(icon);
-        this.dispose();
+        String username = txtUser.getText();
+        String password = new String(txtPassword.getPassword());
+    
+        User user = MongoDbManager.findUserByUsername(username);
+
+        if (user != null && user.verifyPassword(password)) {
+            JOptionPane.showMessageDialog(this, "Login exitoso");
+            this.dispose();
             FrmMenu menu = new FrmMenu();
             menu.setVisible(true);
-//        String username = txtUser.getText();
-//        String password = txtPassword.getText();
-//
-//        // Validar las credenciales
-//        if (mongoDbManager.validateLogin(username, password)) {
-//            
-//        } else {
-//            JOptionPane.showMessageDialog(this, "Credenciales inválidas. Intente de nuevo.", "Error de Login", JOptionPane.ERROR_MESSAGE);
-//        }
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
+        } 
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed

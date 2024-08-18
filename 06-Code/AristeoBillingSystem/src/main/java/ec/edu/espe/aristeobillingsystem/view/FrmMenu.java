@@ -31,10 +31,19 @@ public class FrmMenu extends javax.swing.JFrame {
         mnuBack = new javax.swing.JMenu();
         mniBack = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mniAddProduct = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
 
@@ -76,6 +85,13 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuBar1.add(mnuBack);
 
         jMenu10.setText("Gestión de Clientes");
+
+        jMenuItem2.setText("Añadir cliente");
+        jMenu10.add(jMenuItem2);
+
+        jMenuItem3.setText("Eliminar cliente");
+        jMenu10.add(jMenuItem3);
+
         jMenuBar1.add(jMenu10);
 
         jMenu2.setText("Gestión de Productos");
@@ -89,12 +105,35 @@ public class FrmMenu extends javax.swing.JFrame {
         });
         jMenu2.add(mniAddProduct);
 
+        jMenuItem1.setText("Eliminar Porducto");
+        jMenu2.add(jMenuItem1);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Gestión de Facturas");
+
+        jMenuItem4.setText("Crear Nueva Factura");
+        jMenu3.add(jMenuItem4);
+
+        jMenuItem5.setText("Ver Factura");
+        jMenu3.add(jMenuItem5);
+
+        jMenuItem6.setText("Eliminar factura");
+        jMenu3.add(jMenuItem6);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Reportes");
+
+        jMenuItem7.setText("Reporte de ventas");
+        jMenu4.add(jMenuItem7);
+
+        jMenuItem8.setText("Reportes de productos mas vendidos");
+        jMenu4.add(jMenuItem8);
+
+        jMenuItem9.setText("Reportes de clientes");
+        jMenu4.add(jMenuItem9);
+
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Ayuda");
@@ -173,6 +212,15 @@ public static void main(String args[]) {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem mniAddProduct;
     private javax.swing.JMenuItem mniBack;

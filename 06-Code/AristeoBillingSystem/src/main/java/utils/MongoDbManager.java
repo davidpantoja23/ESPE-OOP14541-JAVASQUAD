@@ -3,47 +3,64 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package utils;
-
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
-import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Filters;
+import com.mongodb.client.MongoCollection;
 import ec.edu.espe.aristeobillingsystem.model.Customer;
 import ec.edu.espe.aristeobillingsystem.model.Product;
+import ec.edu.espe.aristeobillingsystem.model.User;
 import org.bson.Document;
 
-
-/**
- *
- * @author ASUS
- */
 public class MongoDbManager {
     private static MongoClient mongoClient;
-    private static MongoDatabase dataBase;
-    private static MongoCollection<Document> collection;
-    
-    static{
-        MongoClientURI uri = new MongoClientURI("mongodb+srv://damorillo3:damorillo3@cluster0.f4bek4r.mongodb.net/?retryWrites=true&w=majority");
-        mongoClient = new MongoClient(uri);
-        dataBase = mongoClient.getDatabase("Aristeo");
-        collection = dataBase.getCollection("Admin");
-        collection = dataBase.getCollection("Products");
-        collection = dataBase.getCollection("Customers");
-    } 
-    
+    private static MongoDatabase database;
+
+    static {
+        mongoClient = MongoClients.create("mongodb+srv://Jenni:Jenni@cluster0.tjpvdfr.mongodb.net/");
+        database = mongoClient.getDatabase("Aristeo");
+    }
+
+    private static MongoCollection<Document> getCollection(String collectionName) {
+        return database.getCollection(collectionName);
+    }
+
     public static void addProduct(Product product) {
-        Document document = new Document("id", product.getId()).append("name", product.getName()).append("price", product.getPrice()).append("stock", product.getStock());
+        MongoCollection<Document> collection = getCollection("Products");
+        Document document = new Document("id", product.getId())
+            .append("name", product.getName())
+            .append("price", product.getPrice())
+            .append("stock", product.getStock());
         collection.insertOne(document);
     }
-    
-    public static void createCustomer(Customer customer){
-        Document document = new Document("dni", customer.getDni()).append("name", customer.getName()).append("email", customer.getEmail()).append("phone", customer.getPhone());
+
+    public static void createCustomer(Customer customer) {
+        MongoCollection<Document> collection = getCollection("Customers");
+        Document document = new Document("dni", customer.getDni())
+            .append("name", customer.getName())
+            .append("email", customer.getEmail())
+            .append("phone", customer.getPhone());
         collection.insertOne(document);
     }
-    
-//    public boolean validateLogin(String username, String password) {
-//        Document user = collection.find(Filters.and(Filters.eq("username", username), Filters.eq("password", password))).first();
-//        return user != null;
-//    }
+
+    public static void saveUser(User user) {
+        MongoCollection<Document> collection = getCollection("Users");
+        Document document = new Document("username", user.getUsername())
+            .append("password", user.getPassword()) 
+            .append("role", user.getRole());
+        collection.insertOne(document);
+    }
+
+    public static User findUserByUsername(String username) {
+        MongoCollection<Document> collection = getCollection("Users");
+        Document query = new Document("username", username);
+        Document userDoc = collection.find(query).first();
+
+        if (userDoc != null) {
+            String password = userDoc.getString("password");
+            String role = userDoc.getString("role");
+            return new User(username, password, role);
+        }
+        return null;
+    }
 }

@@ -17,10 +17,8 @@ public class ControllerCustomer {
     private static User user;
     public static void createCustomer(Customer customer){
         Objects.requireNonNull(customer, "El producto no puede ser nulo.");
-        user.addCustomer(customer);
     }
     
     public void removeCustomer(String customer) {
-        user.removeCustomer(customer);
     }
 }

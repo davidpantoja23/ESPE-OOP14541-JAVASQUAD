@@ -1,71 +1,64 @@
 package ec.edu.espe.aristeobillingsystem.model;
 
-import java.util.ArrayList;
-
+import org.mindrot.jbcrypt.BCrypt;
 /**
  *
- * @author ASUS
+ * @author 
  */
 public class User {
-
     private String username;
-    private String password;
-    private ArrayList<Customer> customers;
+    private String password;  // Este será almacenado encriptado
+    private String role;      // Puede ser "Admin" o "Cajero"
 
-    public User(String username, String password, ArrayList<Customer> customesr) {
+    // Constructor
+    public User(String username, String password, String role) {
         this.username = username;
-        this.password = password;
-        this.customers = customesr;
+        this.password = encryptPassword(password);  // Encripta la contraseña al crear el usuario
+        this.role = role;
     }
-    public void addCustomer(Customer customer){
-        customers.add(customer);
+
+    // Método para encriptar la contraseña
+    private String encryptPassword(String plainPassword) {
+        return BCrypt.hashpw(plainPassword, BCrypt.gensalt());
     }
-    
-    public void removeCustomer(String dni) {
-        customers.removeIf(c -> c.getDni().equals(dni));
+
+    // Método para verificar la contraseña
+    public boolean verifyPassword(String plainPassword) {
+        return BCrypt.checkpw(plainPassword, this.password);
     }
-    /**
-     * @return the username
-     */
+
+    // Getters y Setters
     public String getUsername() {
         return username;
     }
 
-    /**
-     * @param username the username to set
-     */
     public void setUsername(String username) {
         this.username = username;
     }
 
-    /**
-     * @return the password
-     */
     public String getPassword() {
         return password;
     }
 
-    /**
-     * @param password the password to set
-     */
     public void setPassword(String password) {
-        this.password = password;
+        this.password = encryptPassword(password);  // Encripta la nueva contraseña
     }
 
-    /**
-     * @return the customesr
-     */
-    public ArrayList<Customer> getCustomesr() {
-        return customers;
+    public String getRole() {
+        return role;
     }
 
-    /**
-     * @param customesr the customesr to set
-     */
-    public void setCustomesr(ArrayList<Customer> customesr) {
-        this.customers = customesr;
+    public void setRole(String role) {
+        this.role = role;
     }
-    
 
-    
+    // Método adicional para verificar el rol
+    public boolean isAdmin() {
+        return "Admin".equalsIgnoreCase(this.role);
+    }
+
+    public boolean isCajero() {
+        return "Cajero".equalsIgnoreCase(this.role);
+    }
 }
+

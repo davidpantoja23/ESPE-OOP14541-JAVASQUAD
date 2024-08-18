@@ -116,6 +116,7 @@ public class FrmSplash extends javax.swing.JFrame {
         .getScaledInstance(lblIcon.getWidth(), lblIcon.getHeight(), 0));
         lblIcon.setIcon(icon);
         this.setVisible(false);
+        System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 
     /**
