@@ -9,44 +9,49 @@ package ec.edu.espe.aristeobillingsystem.model;
  * @author David Morillo, JavaSquad, DCCO-ESPE
  */
 public class InvoiceLine {
-
-    private Product product;
+    private String description;
     private int quantity;
+    private double unitPrice;
+    private double subTotal;
 
-    public InvoiceLine(Product product, int quantity) {
-        this.product = product;
+    public InvoiceLine(String description, int quantity, double unitPrice) {
+        this.description = description;
         this.quantity = quantity;
+        this.unitPrice = unitPrice;
+        this.subTotal = calculateSubTotal();
     }
 
-    public double getSubTotal() {
-        return product.getPrice() * quantity;
+    private double calculateSubTotal() {
+        return quantity * unitPrice;
     }
 
-    /**
-     * @return the product
-     */
-    public Product getProduct() {
-        return product;
+    public String getDescription() {
+        return description;
     }
 
-    /**
-     * @param product the product to set
-     */
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    /**
-     * @return the quantity
-     */
     public int getQuantity() {
         return quantity;
     }
 
-    /**
-     * @param quantity the quantity to set
-     */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+        this.subTotal = calculateSubTotal();
+    }
+
+    public double getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(double unitPrice) {
+        this.unitPrice = unitPrice;
+        this.subTotal = calculateSubTotal();
+    }
+
+    public double getSubTotal() {
+        return subTotal;
     }
 }
