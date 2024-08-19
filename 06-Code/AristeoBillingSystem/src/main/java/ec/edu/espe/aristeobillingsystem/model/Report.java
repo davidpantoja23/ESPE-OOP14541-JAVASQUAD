@@ -11,12 +11,14 @@ public class Report {
     private int id;
     private String type;
     private String content;
+    private PaymentMethod paymentMethod;
 
-    public Report(int id, String type, String content) {
+    public Report(int id, String type, String content, PaymentMethod paymentMethod) {
         validateReportDetails(id, type, content);
         this.id = id;
         this.type = type;
         this.content = content;
+        this.paymentMethod = Objects.requireNonNull(paymentMethod, "El método de pago no puede ser nulo.");
     }
 
     private void validateReportDetails(int id, String type, String content) {
@@ -27,45 +29,35 @@ public class Report {
         Objects.requireNonNull(content, "El contenido no puede ser nulo.");
     }
 
-    /**
-     * @return the id
-     */
     public int getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
     public void setId(int id) {
         this.id = id;
     }
 
-    /**
-     * @return the type
-     */
     public String getType() {
         return type;
     }
 
-    /**
-     * @param type the type to set
-     */
     public void setType(String type) {
         this.type = type;
     }
 
-    /**
-     * @return the content
-     */
     public String getContent() {
         return content;
     }
 
-    /**
-     * @param content the content to set
-     */
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = Objects.requireNonNull(paymentMethod, "El método de pago no puede ser nulo.");
     }
 }

@@ -16,7 +16,7 @@ public class ControllerCustomer {
     
     private static User user;
     public static void createCustomer(Customer customer){
-        Objects.requireNonNull(customer, "El producto no puede ser nulo.");
+        Objects.requireNonNull(customer, "El campo de cliente cliente no puede estar vacio.");
     }
     
     public void removeCustomer(String customer) {

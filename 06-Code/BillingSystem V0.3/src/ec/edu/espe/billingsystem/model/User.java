@@ -5,6 +5,9 @@
  */
 package ec.edu.espe.billingsystem.model;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 /**
  *
  * @author Simone Medina, JavaSquad, DCCO-ESPE
@@ -16,7 +19,7 @@ public class User {
 
     public User(String username, String password) {
         this.username = username;
-        this.password = password;
+        this.password = hashPassword(password);
     }
 
     public String getUsername() {
@@ -24,6 +27,20 @@ public class User {
     }
 
     public boolean authenticate(String password) {
-        return this.password.equals(password);
+        return this.password.equals(hashPassword(password));
+    }
+
+    private String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hashedBytes = md.digest(password.getBytes());
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashedBytes) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("Error al encriptar la contraseña", e);
+        }
     }
 }

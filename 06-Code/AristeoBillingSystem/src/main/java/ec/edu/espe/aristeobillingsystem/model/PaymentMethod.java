@@ -5,39 +5,27 @@ package ec.edu.espe.aristeobillingsystem.model;
  * @author David Morillo, JavaSquad, DCCO-ESPE
  */
 public class PaymentMethod {
-    private int id;
-    private String name;
+    private String methodType;
+    private String details;
 
-    public PaymentMethod(int id, String name) {
-        this.id = id;
-        this.name = name;
+    public PaymentMethod(String methodType, String details) {
+        this.methodType = methodType;
+        this.details = details;
     }
 
-    /**
-     * @return the id
-     */
-    public int getId() {
-        return id;
+    public String getMethodType() {
+        return methodType;
     }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
-        this.id = id;
+    public void setMethodType(String methodType) {
+        this.methodType = methodType;
     }
 
-    /**
-     * @return the name
-     */
-    public String getName() {
-        return name;
+    public String getDetails() {
+        return details;
     }
 
-    /**
-     * @param name the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
-    } 
+    public void setDetails(String details) {
+        this.details = details;
+    }
 }
