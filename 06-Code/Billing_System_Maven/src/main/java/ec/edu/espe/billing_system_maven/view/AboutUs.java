@@ -2,7 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+<<<<<<<< HEAD:06-Code/Maven__BillingSystem/Maven__BillingSystem/src/main/java/ec/edu/espe/billingsystem/view/Mision_y_vision.java
+package ec.edu.espe.billingsystem.view;
+========
 package ec.edu.espe.billing_system_maven.view;
+>>>>>>>> 669d5503c32ffbeed62fefcdbb975f557b231366:06-Code/Billing_System_Maven/src/main/java/ec/edu/espe/billing_system_maven/view/AboutUs.java
 
 /**
  *

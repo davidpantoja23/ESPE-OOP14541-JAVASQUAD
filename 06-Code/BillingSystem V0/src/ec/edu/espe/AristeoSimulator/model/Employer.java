@@ -8,11 +8,11 @@ package ec.edu.espe.AristeoSimulator.model;
  *
  * @author David Morillo, JavaSquad, DCCO-ESPE
  */
-public class Employer {
-    private int id;
+public class Employer{
+    private ind id;
     private String name;
     private String turn;
-
+    
     public Employer(int id, String name, String turn) {
         this.id = id;
         this.name = name;

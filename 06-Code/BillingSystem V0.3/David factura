@@ -1,0 +1,35 @@
+{
+  "customer": {
+    "customerId": "1729403236",
+    "typeOfId": {
+      "id": 1,
+      "typeName": "Cédula",
+      "idNumber": "1729403236"
+    },
+    "name": "David",
+    "email": "david@gmial.com"
+  },
+  "lines": [
+    {
+      "product": {
+        "id": 23,
+        "name": "Mojito",
+        "price": 3.75,
+        "stock": 1
+      },
+      "quantity": 1
+    }
+  ],
+  "paymentMethod": {
+    "id": 1,
+    "name": "Efectivo"
+  },
+  "typeOfId": {
+    "id": 1,
+    "typeName": "Cédula",
+    "idNumber": "1729403236"
+  },
+  "subtotal": 3.75,
+  "vat": 0.5625,
+  "total": 4.3125
+}
