@@ -10,7 +10,7 @@ import java.util.Objects;
 
 /**
  *
- * @author David Morillo, JavaSquad, DCCO-ESPE
+ * @author Jenniffer Marquez, JavaSquad, DCCO-ESPE
  */
 public class ControllerCustomer {
     
@@ -20,5 +20,8 @@ public class ControllerCustomer {
     }
     
     public void removeCustomer(String customer) {
+        Objects.requireNonNull(customerId, "El campo de ID de cliente no puede estar vacío.");
     }
+    
+    
 }

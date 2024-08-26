@@ -41,59 +41,47 @@ public class Product {
         }
     }
 
-    /**
-     * @return the id
-     */
     public int getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
     public void setId(int id) {
+        if (id < 0) {
+            throw new IllegalArgumentException("El ID del producto no puede ser negativo.");
+        }
         this.id = id;
     }
 
-    /**
-     * @return the name
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * @param name the name to set
-     */
     public void setName(String name) {
+        if (name == null) {
+            throw new IllegalArgumentException("El nombre del producto no puede ser nulo.");
+        }
         this.name = name;
     }
 
-    /**
-     * @return the price
-     */
     public double getPrice() {
         return price;
     }
 
-    /**
-     * @param price the price to set
-     */
     public void setPrice(double price) {
+        if (price <= 0) {
+            throw new IllegalArgumentException("El precio debe ser positivo.");
+        }
         this.price = price;
     }
 
-    /**
-     * @return the stock
-     */
     public int getStock() {
         return stock;
     }
 
-    /**
-     * @param stock the stock to set
-     */
     public void setStock(int stock) {
+        if (stock < 0) {
+            throw new IllegalArgumentException("El stock no puede ser negativo.");
+        }
         this.stock = stock;
     }
 

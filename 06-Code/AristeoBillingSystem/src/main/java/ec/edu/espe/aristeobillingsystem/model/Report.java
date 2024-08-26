@@ -12,7 +12,7 @@ public class Report {
     private String type;
     private String content;
     private PaymentMethod paymentMethod;
-
+    
     public Report(int id, String type, String content, PaymentMethod paymentMethod) {
         validateReportDetails(id, type, content);
         this.id = id;
@@ -34,6 +34,9 @@ public class Report {
     }
 
     public void setId(int id) {
+        if (id < 0) {
+            throw new IllegalArgumentException("El ID del informe no puede ser negativo.");
+        }
         this.id = id;
     }
 
@@ -42,6 +45,7 @@ public class Report {
     }
 
     public void setType(String type) {
+        Objects.requireNonNull(type, "El tipo no puede ser nulo.");
         this.type = type;
     }
 
@@ -50,6 +54,7 @@ public class Report {
     }
 
     public void setContent(String content) {
+        Objects.requireNonNull(content, "El contenido no puede ser nulo.");
         this.content = content;
     }
 

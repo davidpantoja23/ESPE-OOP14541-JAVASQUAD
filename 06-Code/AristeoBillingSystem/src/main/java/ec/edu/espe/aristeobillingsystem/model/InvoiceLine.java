@@ -15,21 +15,37 @@ public class InvoiceLine {
     private double subTotal;
 
     public InvoiceLine(String description, int quantity, double unitPrice) {
+        validateInvoiceLineDetails(description, quantity, unitPrice);
         this.description = description;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
         this.subTotal = calculateSubTotal();
     }
 
+    private void validateInvoiceLineDetails(String description, int quantity, double unitPrice) {
+        if (description == null || description.isEmpty()) {
+            throw new IllegalArgumentException("La descripción no puede ser nula o vacía.");
+        }
+        if (quantity < 0) {
+            throw new IllegalArgumentException("La cantidad no puede ser negativa.");
+        }
+        if (unitPrice <= 0) {
+            throw new IllegalArgumentException("El precio por unidad debe ser positivo.");
+        }
+    }
+
     private double calculateSubTotal() {
         return quantity * unitPrice;
     }
-
+    
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
+        if (description == null || description.isEmpty()) {
+            throw new IllegalArgumentException("La descripción no puede ser nula o vacía.");
+        }
         this.description = description;
     }
 
@@ -38,6 +54,9 @@ public class InvoiceLine {
     }
 
     public void setQuantity(int quantity) {
+        if (quantity < 0) {
+            throw new IllegalArgumentException("La cantidad no puede ser negativa.");
+        }
         this.quantity = quantity;
         this.subTotal = calculateSubTotal();
     }
@@ -47,6 +66,9 @@ public class InvoiceLine {
     }
 
     public void setUnitPrice(double unitPrice) {
+        if (unitPrice <= 0) {
+            throw new IllegalArgumentException("El precio por unidad debe ser positivo.");
+        }
         this.unitPrice = unitPrice;
         this.subTotal = calculateSubTotal();
     }

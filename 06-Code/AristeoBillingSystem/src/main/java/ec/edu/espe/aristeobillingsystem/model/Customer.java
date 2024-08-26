@@ -1,9 +1,7 @@
 package ec.edu.espe.aristeobillingsystem.model;
 
+import java.util.Objects;
 import java.util.UUID;
-
-/**
- *
 
 /**
  *
@@ -15,8 +13,13 @@ public class Customer {
     private int id;
 
     public Customer(String name, String address) {
-        this.name = name;
-        this.address = address;
+        this.name = Objects.requireNonNull(name, "El nombre no puede ser nulo");
+        this.address = Objects.requireNonNull(address, "La dirección no puede ser nula");
+    }
+
+    public Customer(String name, String address, int id) {
+        this(name, address);
+        this.id = id;
     }
 
     public String getName() {
@@ -35,10 +38,11 @@ public class Customer {
         this.address = address;
     }
 
-    /**
-     * @return the id
-     */
     public int getId() {
         return id;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -14,7 +14,7 @@ import java.util.Objects;
  * @author David Morillo, JavaSquad, DCCO-ESPE
  */
 public class Invoice {
-
+    
     private Customer customer;
     private ArrayList<InvoiceLine> lines;
     private PaymentMethod paymentMethod;
@@ -22,14 +22,12 @@ public class Invoice {
     private double vat;
     private double total;
 
-    public Invoice(Customer customer, ArrayList<InvoiceLine> lines, PaymentMethod paymentMethod, double subTotal, double vat, double total) {
+    public Invoice(Customer customer, ArrayList<InvoiceLine> lines, PaymentMethod paymentMethod) {
         validateInvoiceDetails(customer, paymentMethod);
         this.customer = customer;
-        this.lines = lines;
+        this.lines = new ArrayList<>(lines);
         this.paymentMethod = paymentMethod;
-        this.subTotal = subTotal;
-        this.vat = vat;
-        this.total = total;
+        updateTotals();
     }
 
     private void validateInvoiceDetails(Customer customer, PaymentMethod paymentMethod) {
@@ -48,87 +46,40 @@ public class Invoice {
         total = subTotal + vat;
     }
 
-    /**
-     * @return the customer
-     */
     public Customer getCustomer() {
         return customer;
     }
 
-    /**
-     * @param customer the customer to set
-     */
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
-    /**
-     * @return the line
-     */
-    public ArrayList<InvoiceLine> getLine() {
+    public ArrayList<InvoiceLine> getLines() {
         return new ArrayList<>(lines);
     }
 
-    /**
-     * @param line the line to set
-     */
-    public void setLine(ArrayList<InvoiceLine> line) {
-        this.lines = line;
+    public void setLines(ArrayList<InvoiceLine> lines) {
+        this.lines = new ArrayList<>(lines);
+        updateTotals();
     }
 
-    /**
-     * @return the paymentMethod
-     */
     public PaymentMethod getPaymentMethod() {
         return paymentMethod;
     }
 
-    /**
-     * @param paymentMethod the paymentMethod to set
-     */
     public void setPaymentMethod(PaymentMethod paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 
-    /**
-     * @return the subTotal
-     */
     public double getSubTotal() {
         return subTotal;
     }
 
-    /**
-     * @param subTotal the subTotal to set
-     */
-    public void setSubTotal(double subTotal) {
-        this.subTotal = subTotal;
-    }
-
-    /**
-     * @return the vat
-     */
     public double getVat() {
         return vat;
     }
 
-    /**
-     * @param vat the vat to set
-     */
-    public void setVat(double vat) {
-        this.vat = vat;
-    }
-
-    /**
-     * @return the total
-     */
     public double getTotal() {
         return total;
-    }
-
-    /**
-     * @param total the total to set
-     */
-    public void setTotal(double total) {
-        this.total = total;
     }
 }
