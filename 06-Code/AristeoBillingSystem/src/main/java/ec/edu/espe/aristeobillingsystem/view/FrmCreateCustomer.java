@@ -5,6 +5,7 @@
 package ec.edu.espe.aristeobillingsystem.view;
 
 import ec.edu.espe.aristeobillingsystem.controller.ControllerCustomer;
+import ec.edu.espe.aristeobillingsystem.controller.ControllerProduct;
 import ec.edu.espe.aristeobillingsystem.model.Customer;
 import javax.swing.JOptionPane;
 import utils.MongoDbManager;
@@ -154,31 +155,35 @@ public class FrmCreateCustomer extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Customer customer;
-        String dni;
-        String name;
-        String email;
-        String phone;
-        
-        dni = txtDni.getText();
-        name = txtName.getText();
-        email = txtEmail.getText();
-        phone = txtPhone.getText();
-        
-        customer = new Customer(dni, name, email, phone);
-        MongoDbManager.createCustomer(customer);
-        if (JOptionPane.showConfirmDialog(this, "Estás seguro de que deseas guardar el cliente --> " + customer) == 0) {
-            System.out.println("Cliente guardado: " + customer);
-            ControllerCustomer.createCustomer(customer);
-        }
+
+       handleCreateCustomer();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+       handleOpenMenu();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void handleCreateCustomer() {
+        try {
+            String dni = txtDni.getText();
+            String name = txtName.getText();
+            String email = txtEmail.getText();
+            String phone = txtPhone.getText();
+
+            Customer customer = new Customer(dni, name, email, phone);
+            ControllerCustomer.addCustomer(customer);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al crear el cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    // Método para manejar la apertura del menú
+    private void handleOpenMenu() {
         this.dispose();
         FrmMenu menu = new FrmMenu();
         menu.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
+    }
     /**
      * @param args the command line arguments
      */

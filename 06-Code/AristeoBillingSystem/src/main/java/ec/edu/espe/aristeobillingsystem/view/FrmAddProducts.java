@@ -14,12 +14,14 @@ import utils.MongoDbManager;
  * @author David Morillo, JavaSquad, DCCO-ESPE
  */
 public class FrmAddProducts extends javax.swing.JFrame {
-
+    
+    private ControllerProduct controllerProduct;
     /**
      * Creates new form FrmAddProducts
      */
     public FrmAddProducts() {
         initComponents();
+        controllerProduct =  new ControllerProduct();
     }
 
     /**
@@ -158,24 +160,11 @@ public class FrmAddProducts extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        Product product;
-        int id;
-        String name;
-        double price;
-        int stock;
-
-        id = Integer.parseInt(txtId.getText());
-        name = txtName.getText();
-        price = Double.parseDouble(txtPrice.getText());
-        stock = Integer.parseInt(txtStock.getText());
-        
-        product = new Product(id, name, price, stock);
-        MongoDbManager.addProduct(product);
-        
-        if (JOptionPane.showConfirmDialog(this, "Está seguro de que desea guardar el producto --> " + product) == 0) {
-            System.out.println("Producto guardado: " + product);
-            ControllerProduct.addProduct(product);
-        }
+        int id = Integer.parseInt(txtId.getText());
+        String name = txtName.getText();
+        double price = Double.parseDouble(txtPrice.getText());
+        int stock = Integer.parseInt(txtStock.getText());
+        controllerProduct.addProduct(id, name, price, stock);
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
